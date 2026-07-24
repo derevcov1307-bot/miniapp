@@ -3,22 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>MiniApp Lab | Разработка</title>
+    
+    <title>MiniLab — разработка Telegram Mini Apps и ботов</title>
+    <meta name="description" content="Создаём Telegram Mini Apps, ботов с AI, интернет-магазины, админ-панели и сайты под ключ. Цены от 500 ₽. Разработка с использованием AI.">
+    <meta name="keywords" content="telegram mini app, разработка ботов, заказать телеграм бота, мини апп телеграм, создание сайтов">
+    <link rel="canonical" href="https://botstudio.github.io/minilab/">
+    <meta property="og:title" content="MiniLab — разработка Telegram Mini Apps и ботов">
+    <meta property="og:description" content="Создаём Telegram Mini Apps, ботов с AI и сайты под ключ. Цены от 500 ₽.">
+    <meta property="og:url" content="https://botstudio.github.io/minilab/">
+    <meta name="robots" content="index, follow">
+    
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
             background: #0a0a0f;
             color: #e8edf5;
             padding: 20px 16px 60px;
-            line-height: 1.5;
+            line-height: 1.6;
             min-height: 100vh;
             -webkit-font-smoothing: antialiased;
         }
+        
         body::before {
             content: '';
             position: fixed;
@@ -26,48 +41,53 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(ellipse at 20% 50%, rgba(59, 130, 246, 0.06) 0%, transparent 60%),
-                        radial-gradient(ellipse at 80% 20%, rgba(139, 92, 246, 0.06) 0%, transparent 50%);
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 100%, rgba(236, 72, 153, 0.04) 0%, transparent 40%);
             z-index: -1;
-            animation: bgPulse 20s ease-in-out infinite alternate;
+            animation: bgFloat 25s ease-in-out infinite alternate;
         }
-        @keyframes bgPulse {
+        
+        @keyframes bgFloat {
             0% { transform: scale(1) rotate(0deg); }
-            100% { transform: scale(1.08) rotate(3deg); }
+            100% { transform: scale(1.1) rotate(5deg); }
         }
-
+        
         .container {
-            max-width: 480px;
+            max-width: 560px;
             margin: 0 auto;
         }
-
-        /* Header */
+        
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 32px;
+            margin-bottom: 24px;
             padding-top: 8px;
-            animation: fadeDown 0.6s ease-out;
+            animation: fadeDown 0.5s ease-out;
         }
+        
         .logo {
             font-weight: 700;
-            font-size: 22px;
+            font-size: 24px;
             letter-spacing: -0.5px;
             background: linear-gradient(135deg, #f8fafc, #94a3b8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+        
         .logo .accent {
             background: linear-gradient(135deg, #60a5fa, #a78bfa);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+        
         .btn-outline {
-            background: transparent;
-            padding: 8px 20px;
+            background: rgba(255,255,255,0.05);
+            padding: 10px 24px;
             border-radius: 40px;
             font-size: 14px;
             font-weight: 500;
@@ -76,16 +96,41 @@
             border: 1px solid rgba(255,255,255,0.06);
             transition: all 0.3s ease;
         }
+        
         .btn-outline:hover {
-            border-color: rgba(255,255,255,0.15);
+            background: rgba(59, 130, 246, 0.15);
+            border-color: rgba(59, 130, 246, 0.3);
             color: #f8fafc;
         }
-
-        /* Hero */
+        
         .hero {
-            padding: 32px 0 28px;
-            animation: fadeUp 0.8s ease-out;
+            padding: 20px 0 28px;
+            animation: fadeUp 0.6s ease-out;
         }
+        
+        .hero-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            align-items: center;
+        }
+        
+        .hero-content {
+            flex: 1;
+        }
+        
+        .hero-image {
+            flex: 0 0 auto;
+            width: 100%;
+            max-width: 280px;
+        }
+        
+        .hero-image svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
         .hero .tag {
             display: inline-block;
             font-size: 12px;
@@ -93,385 +138,652 @@
             color: #60a5fa;
             letter-spacing: 0.5px;
             text-transform: uppercase;
-            background: rgba(59,130,246,0.08);
-            padding: 4px 14px;
+            background: rgba(59,130,246,0.1);
+            padding: 6px 16px;
             border-radius: 20px;
-            border: 1px solid rgba(59,130,246,0.06);
+            border: 1px solid rgba(59,130,246,0.08);
             margin-bottom: 16px;
         }
+        
         .hero h1 {
-            font-size: 34px;
+            font-size: 32px;
             font-weight: 700;
             line-height: 1.1;
             margin-bottom: 14px;
             letter-spacing: -0.5px;
         }
+        
         .hero h1 .highlight {
             background: linear-gradient(135deg, #60a5fa, #a78bfa);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+        
         .hero p {
-            color: #64748b;
+            color: #94a3b8;
             font-size: 16px;
             line-height: 1.7;
             margin-bottom: 28px;
-            max-width: 90%;
         }
+        
         .hero .btn-primary {
             display: inline-block;
             background: linear-gradient(135deg, #3b82f6, #7c3aed);
             color: #fff;
-            padding: 14px 36px;
+            padding: 16px 44px;
             border-radius: 50px;
             font-weight: 600;
-            font-size: 15px;
+            font-size: 16px;
             text-decoration: none;
-            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.25);
+            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3);
             transition: all 0.3s ease;
             border: none;
+            cursor: pointer;
         }
+        
         .hero .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 48px rgba(59, 130, 246, 0.35);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 48px rgba(59, 130, 246, 0.45);
         }
-
-        /* Section titles */
+        
         .section-title {
-            font-size: 17px;
+            font-size: 20px;
             font-weight: 600;
-            margin: 40px 0 14px;
+            margin: 44px 0 16px;
             letter-spacing: -0.3px;
-            color: #94a3b8;
+            color: #f1f5f9;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
         }
+        
         .section-title .line {
             flex: 1;
             height: 1px;
-            background: rgba(255,255,255,0.04);
+            background: linear-gradient(90deg, rgba(255,255,255,0.06), transparent);
         }
-
-        /* Cards — minimal glass */
+        
         .card-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            animation: fadeUp 0.8s ease-out;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            animation: fadeUp 0.7s ease-out;
         }
+        
         .card {
             background: rgba(255,255,255,0.02);
             border: 1px solid rgba(255,255,255,0.04);
             border-radius: 16px;
-            padding: 16px 18px;
+            padding: 18px 20px;
             transition: all 0.3s ease;
+            cursor: default;
         }
+        
         .card:hover {
             background: rgba(255,255,255,0.04);
             border-color: rgba(255,255,255,0.08);
-            transform: translateX(4px);
+            transform: translateX(6px);
         }
+        
         .card .card-top {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
         }
+        
         .card h3 {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 500;
             color: #f1f5f9;
             letter-spacing: -0.2px;
         }
+        
         .card .icon {
-            font-size: 18px;
+            font-size: 20px;
             color: #475569;
-            width: 28px;
+            width: 32px;
             text-align: center;
             font-weight: 300;
         }
+        
         .card p {
-            color: #64748b;
-            font-size: 13px;
-            margin-top: 2px;
-            padding-left: 28px;
+            color: #94a3b8;
+            font-size: 14px;
+            margin-top: 6px;
+            padding-right: 8px;
+            line-height: 1.6;
         }
+        
         .card .price-tag {
             display: inline-block;
-            margin-top: 6px;
-            padding-left: 28px;
-            font-size: 13px;
+            margin-top: 10px;
+            font-size: 14px;
             font-weight: 500;
             color: #60a5fa;
             letter-spacing: 0.3px;
+            padding: 2px 0;
         }
+        
         .card .arrow {
             color: #334155;
             font-size: 14px;
             transition: 0.3s;
+            margin-left: 4px;
         }
+        
         .card:hover .arrow {
             color: #60a5fa;
             transform: translateX(4px);
         }
-
-        /* Price card */
+        
         .price-card {
             background: rgba(255,255,255,0.02);
             border: 1px solid rgba(255,255,255,0.04);
             border-radius: 16px;
-            padding: 4px 16px;
-            animation: fadeUp 0.9s ease-out;
+            padding: 6px 18px;
+            animation: fadeUp 0.8s ease-out;
         }
+        
         .price-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 0;
+            padding: 14px 0;
             border-bottom: 1px solid rgba(255,255,255,0.03);
             font-size: 14px;
         }
+        
         .price-row:last-child {
             border-bottom: none;
         }
+        
         .price-name {
-            color: #94a3b8;
+            color: #cbd5e1;
             font-weight: 400;
         }
+        
         .price-value {
             font-weight: 500;
-            color: #e8edf5;
+            color: #f1f5f9;
             letter-spacing: 0.2px;
         }
+        
         .price-value.accent {
             color: #60a5fa;
         }
-
-        /* Form */
+        
         .form-card {
             background: rgba(255,255,255,0.02);
             border: 1px solid rgba(255,255,255,0.04);
             border-radius: 20px;
-            padding: 24px 20px;
-            margin: 28px 0;
-            animation: fadeUp 1s ease-out;
+            padding: 28px 24px;
+            margin: 32px 0;
+            animation: fadeUp 0.9s ease-out;
         }
+        
         .form-card .form-title {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 600;
-            margin-bottom: 2px;
+            margin-bottom: 4px;
             letter-spacing: -0.3px;
         }
+        
         .form-card .form-sub {
-            color: #64748b;
+            color: #94a3b8;
             font-size: 14px;
-            margin-bottom: 18px;
+            margin-bottom: 20px;
         }
+        
         .form-card label {
             font-size: 12px;
             font-weight: 500;
-            color: #64748b;
+            color: #94a3b8;
             display: block;
-            margin: 14px 0 4px;
+            margin: 16px 0 6px;
             letter-spacing: 0.3px;
             text-transform: uppercase;
         }
-        .form-card input, .form-card select {
+        
+        .form-card input,
+        .form-card select {
             width: 100%;
-            padding: 14px 16px;
+            padding: 16px 18px;
             border-radius: 12px;
             border: 1px solid rgba(255,255,255,0.04);
-            background: rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.4);
             color: #f1f5f9;
-            font-size: 15px;
+            font-size: 16px;
             outline: none;
             transition: 0.3s;
             font-family: inherit;
         }
-        .form-card input:focus, .form-card select:focus {
+        
+        .form-card input:focus,
+        .form-card select:focus {
             border-color: rgba(59, 130, 246, 0.3);
-            background: rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.6);
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.04);
         }
+        
         .form-card input::placeholder {
-            color: #334155;
+            color: #475569;
         }
+        
         .form-card select option {
             background: #0a0a0f;
             color: #e8edf5;
         }
+        
         .form-card .btn-submit {
             width: 100%;
-            margin-top: 20px;
+            margin-top: 24px;
             background: linear-gradient(135deg, #3b82f6, #7c3aed);
             color: #fff;
-            padding: 16px;
+            padding: 18px;
             border: none;
             border-radius: 50px;
-            font-size: 16px;
+            font-size: 17px;
             font-weight: 600;
             cursor: pointer;
-            transition: 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.2);
         }
+        
         .form-card .btn-submit:hover {
-            opacity: 0.9;
-            transform: scale(1.01);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(59, 130, 246, 0.35);
         }
-
-        /* Footer CTA */
-        .tg-fixed {
-            margin-top: 28px;
+        
+        #formMsg {
+            margin-top: 16px;
+            font-size: 14px;
             text-align: center;
-            animation: fadeUp 1.1s ease-out;
+            min-height: 24px;
         }
+        
+        .tg-fixed {
+            margin-top: 32px;
+            text-align: center;
+            animation: fadeUp 1s ease-out;
+        }
+        
         .tg-fixed .btn-tg-big {
             display: inline-block;
             background: rgba(255,255,255,0.04);
-            padding: 16px 48px;
+            padding: 18px 52px;
             border-radius: 60px;
-            font-size: 16px;
+            font-size: 17px;
             font-weight: 500;
             color: #f1f5f9;
             text-decoration: none;
             border: 1px solid rgba(255,255,255,0.06);
             transition: all 0.3s ease;
         }
+        
         .tg-fixed .btn-tg-big:hover {
             background: rgba(255,255,255,0.06);
             border-color: rgba(255,255,255,0.12);
+            transform: scale(1.02);
         }
+        
         .tg-fixed .sub {
-            color: #334155;
+            color: #475569;
             font-size: 13px;
-            margin-top: 8px;
+            margin-top: 10px;
         }
-
+        
+        .counter-container {
+            margin: 24px 0 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            color: #475569;
+        }
+        
+        .counter-container img {
+            border-radius: 4px;
+        }
+        
         .footer {
-            margin-top: 40px;
+            margin-top: 48px;
             text-align: center;
             color: #1e293b;
             font-size: 12px;
             letter-spacing: 0.3px;
         }
-
-        /* Animations */
+        
         @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(24px); }
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        
         @keyframes fadeDown {
             from { opacity: 0; transform: translateY(-16px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (min-width: 600px) {
+            .hero-wrapper {
+                flex-direction: row;
+                gap: 32px;
+                align-items: center;
+            }
+            
+            .hero-image {
+                max-width: 220px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            body {
+                padding: 40px 32px 80px;
+            }
+            
+            .container {
+                max-width: 720px;
+            }
+            
+            .hero h1 {
+                font-size: 42px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .card-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 14px;
+            }
+            
+            .card {
+                padding: 20px 24px;
+            }
+            
+            .section-title {
+                font-size: 24px;
+                margin: 48px 0 20px;
+            }
+            
+            .form-card {
+                padding: 36px 32px;
+            }
+            
+            .price-card {
+                padding: 8px 24px;
+            }
+            
+            .price-row {
+                font-size: 15px;
+                padding: 16px 0;
+            }
+            
+            .logo {
+                font-size: 28px;
+            }
+            
+            .btn-outline {
+                padding: 12px 32px;
+                font-size: 15px;
+            }
+            
+            .hero .btn-primary {
+                padding: 18px 52px;
+                font-size: 17px;
+            }
+            
+            .hero-image {
+                max-width: 260px;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 880px;
+            }
+            
+            .card-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 48px;
+            }
+            
+            .hero-image {
+                max-width: 300px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-
-        <!-- Header -->
-        <div class="header">
+        
+        <header class="header">
             <div class="logo">✦ <span class="accent">Mini</span>Lab</div>
-            <a href="https://t.me/Ffghvtc" class="btn-outline">Связаться</a>
-        </div>
-
-        <!-- Hero -->
-        <div class="hero">
-            <div class="tag">AI-Driven Development</div>
-            <h1>Создаём <span class="highlight">Telegram Mini Apps</span><br>и сайты</h1>
-            <p>Современные веб-решения и боты внутри Telegram — от идеи до запуска.</p>
-            <a href="https://t.me/Ffghvtc" class="btn-primary">Начать проект →</a>
-        </div>
-
-        <!-- Telegram Mini Apps -->
+            <a href="https://t.me/Ffghvtc" class="btn-outline" target="_blank">Связаться</a>
+        </header>
+        
+        <section class="hero">
+            <div class="hero-wrapper">
+                <div class="hero-content">
+                    <div class="tag">⚡ AI-Driven Development</div>
+                    <h1>Создаём <span class="highlight">Telegram Mini Apps</span><br>и сайты</h1>
+                    <p>Современные веб-решения, боты и магазины внутри Telegram — от идеи до запуска за 3–7 дней.</p>
+                    <a href="https://t.me/Ffghvtc" class="btn-primary" target="_blank">Начать проект →</a>
+                </div>
+                <div class="hero-image">
+                    <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Фон с лёгким свечением -->
+                        <circle cx="200" cy="200" r="180" fill="url(#glow)" opacity="0.3"/>
+                        <defs>
+                            <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.3"/>
+                                <stop offset="100%" stop-color="#60a5fa" stop-opacity="0"/>
+                            </radialGradient>
+                            <linearGradient id="hairGrad" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0%" stop-color="#2d1b69"/>
+                                <stop offset="100%" stop-color="#1a0f3f"/>
+                            </linearGradient>
+                            <linearGradient id="skinGrad" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#f5d6b8"/>
+                                <stop offset="100%" stop-color="#eac4a0"/>
+                            </linearGradient>
+                            <linearGradient id="glassGrad" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0%" stop-color="rgba(255,255,255,0.15)"/>
+                                <stop offset="100%" stop-color="rgba(255,255,255,0.05)"/>
+                            </linearGradient>
+                            <linearGradient id="laptopGrad" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#1a1a2e"/>
+                                <stop offset="100%" stop-color="#0f0f1a"/>
+                            </linearGradient>
+                            <linearGradient id="screenGrad" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0%" stop-color="#0a0a1a"/>
+                                <stop offset="100%" stop-color="#1a1a3e"/>
+                            </linearGradient>
+                        </defs>
+                        
+                        <!-- Тело (плечи, торс) -->
+                        <ellipse cx="200" cy="330" rx="95" ry="55" fill="#1a1a2e"/>
+                        <ellipse cx="200" cy="320" rx="80" ry="45" fill="#1f1f3a"/>
+                        
+                        <!-- Шея -->
+                        <rect x="175" y="225" width="50" height="45" rx="10" fill="url(#skinGrad)"/>
+                        
+                        <!-- Голова -->
+                        <ellipse cx="200" cy="195" rx="65" ry="75" fill="url(#skinGrad)"/>
+                        
+                        <!-- Волосы (основная масса) -->
+                        <ellipse cx="200" cy="175" rx="72" ry="60" fill="url(#hairGrad)"/>
+                        
+                        <!-- Чёлка -->
+                        <path d="M140 165 Q155 130 180 145 Q190 120 210 140 Q225 115 240 138 Q260 120 265 155 Q270 140 275 165 L140 165Z" fill="url(#hairGrad)"/>
+                        
+                        <!-- Пучок/хвост сбоку -->
+                        <ellipse cx="270" cy="155" rx="30" ry="45" transform="rotate(15 270 155)" fill="url(#hairGrad)"/>
+                        
+                        <!-- Глаза -->
+                        <ellipse cx="175" cy="190" rx="16" ry="14" fill="#f0f0f0"/>
+                        <ellipse cx="225" cy="190" rx="16" ry="14" fill="#f0f0f0"/>
+                        <ellipse cx="178" cy="190" rx="9" ry="9" fill="#2d1b69"/>
+                        <ellipse cx="228" cy="190" rx="9" ry="9" fill="#2d1b69"/>
+                        <ellipse cx="181" cy="187" rx="4" ry="4" fill="white"/>
+                        <ellipse cx="231" cy="187" rx="4" ry="4" fill="white"/>
+                        
+                        <!-- Брови (умные, приподнятые) -->
+                        <path d="M158 176 Q168 168 188 172" stroke="#2d1b69" stroke-width="2.5" stroke-linecap="round"/>
+                        <path d="M215 172 Q235 168 245 176" stroke="#2d1b69" stroke-width="2.5" stroke-linecap="round"/>
+                        
+                        <!-- Очки -->
+                        <ellipse cx="175" cy="190" rx="22" ry="18" stroke="rgba(255,255,255,0.3)" stroke-width="2" fill="url(#glassGrad)"/>
+                        <ellipse cx="225" cy="190" rx="22" ry="18" stroke="rgba(255,255,255,0.3)" stroke-width="2" fill="url(#glassGrad)"/>
+                        <line x1="197" y1="190" x2="203" y2="190" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+                        <line x1="153" y1="190" x2="140" y2="185" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+                        <line x1="247" y1="190" x2="260" y2="185" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+                        
+                        <!-- Нос -->
+                        <path d="M197 200 L200 213 L203 200" stroke="#d4a88a" stroke-width="1.5" stroke-linecap="round"/>
+                        
+                        <!-- Улыбка (лёгкая, уверенная) -->
+                        <path d="M185 215 Q200 225 215 215" stroke="#c48a7a" stroke-width="2" stroke-linecap="round" fill="none"/>
+                        
+                        <!-- Ноутбук -->
+                        <rect x="100" y="250" width="200" height="130" rx="12" fill="url(#laptopGrad)" stroke="#2a2a4a" stroke-width="1"/>
+                        <!-- Экран -->
+                        <rect x="108" y="255" width="184" height="100" rx="6" fill="url(#screenGrad)"/>
+                        <!-- Код на экране -->
+                        <rect x="118" y="265" width="40" height="6" rx="2" fill="#3b82f6" opacity="0.7"/>
+                        <rect x="118" y="278" width="60" height="4" rx="2" fill="#a78bfa" opacity="0.5"/>
+                        <rect x="118" y="290" width="35" height="4" rx="2" fill="#60a5fa" opacity="0.6"/>
+                        <rect x="118" y="302" width="55" height="4" rx="2" fill="#a78bfa" opacity="0.4"/>
+                        <rect x="168" y="278" width="50" height="4" rx="2" fill="#34d399" opacity="0.5"/>
+                        <rect x="168" y="290" width="70" height="4" rx="2" fill="#60a5fa" opacity="0.4"/>
+                        <rect x="168" y="302" width="45" height="4" rx="2" fill="#a78bfa" opacity="0.5"/>
+                        <!-- "AI" на экране -->
+                        <text x="270" y="285" font-family="monospace" font-size="14" font-weight="bold" fill="#60a5fa" opacity="0.8">AI</text>
+                        <!-- Подставка ноутбука -->
+                        <rect x="140" y="380" width="120" height="6" rx="3" fill="#1a1a2e"/>
+                        
+                        <!-- Руки -->
+                        <path d="M120 320 Q110 340 115 360 Q120 370 130 365 Q135 355 130 340" fill="url(#skinGrad)" opacity="0.9"/>
+                        <path d="M280 320 Q290 340 285 360 Q280 370 270 365 Q265 355 270 340" fill="url(#skinGrad)" opacity="0.9"/>
+                        
+                        <!-- Свечение вокруг -->
+                        <circle cx="200" cy="200" r="190" stroke="url(#glow)" stroke-width="1" opacity="0.1"/>
+                    </svg>
+                </div>
+            </div>
+        </section>
+        
         <div class="section-title">
-            <span>Mini Apps</span><span class="line"></span>
+            <span>🤖 Mini Apps</span>
+            <span class="line"></span>
         </div>
+        
         <div class="card-grid">
             <div class="card">
                 <div class="card-top">
                     <h3>Бот с логикой</h3>
                     <span class="icon">⌘</span>
                 </div>
-                <p>Команды, регистрация, уведомления</p>
+                <p>Команды, регистрация, рассылки, уведомления. Любая сложность.</p>
                 <div class="price-tag">от 1 000 ₽ <span class="arrow">→</span></div>
             </div>
+            
             <div class="card">
                 <div class="card-top">
                     <h3>Магазин в Telegram</h3>
                     <span class="icon">◈</span>
                 </div>
-                <p>Каталог, корзина, оплата внутри мессенджера</p>
+                <p>Каталог товаров, корзина, оплата, управление заказами.</p>
                 <div class="price-tag">от 3 000 ₽ <span class="arrow">→</span></div>
             </div>
+            
             <div class="card">
                 <div class="card-top">
                     <h3>Админ-панель</h3>
                     <span class="icon">▣</span>
                 </div>
-                <p>Управление пользователями, контентом, аналитика</p>
+                <p>Управление пользователями, контентом, статистика и аналитика.</p>
                 <div class="price-tag">от 5 000 ₽ <span class="arrow">→</span></div>
             </div>
+            
             <div class="card">
                 <div class="card-top">
                     <h3>Игры и квизы</h3>
                     <span class="icon">◇</span>
                 </div>
-                <p>Интерактив, викторины, геймификация</p>
+                <p>Интерактивные викторины, розыгрыши, геймификация.</p>
                 <div class="price-tag">от 4 000 ₽ <span class="arrow">→</span></div>
             </div>
+            
             <div class="card">
                 <div class="card-top">
                     <h3>Бот с AI</h3>
                     <span class="icon">✦</span>
                 </div>
-                <p>ChatGPT-ассистент, генерация, умная поддержка</p>
+                <p>Интеграция ChatGPT: ассистенты, генерация контента, умная поддержка.</p>
                 <div class="price-tag">от 5 500 ₽ <span class="arrow">→</span></div>
             </div>
+            
             <div class="card">
                 <div class="card-top">
                     <h3>Корпоративный портал</h3>
                     <span class="icon">⊞</span>
                 </div>
-                <p>Личные кабинеты, базы данных, сложные сценарии</p>
+                <p>Личные кабинеты, работа с БД, сложные бизнес-сценарии.</p>
                 <div class="price-tag">от 7 000 ₽ <span class="arrow">→</span></div>
             </div>
         </div>
-
-        <!-- Сайты -->
+        
         <div class="section-title">
-            <span>Сайты</span><span class="line"></span>
+            <span>🌐 Сайты</span>
+            <span class="line"></span>
         </div>
+        
         <div class="card-grid">
             <div class="card">
                 <div class="card-top">
                     <h3>Сайт-визитка</h3>
                     <span class="icon">⎔</span>
                 </div>
-                <p>Лендинг, портфолио, до 5 страниц</p>
+                <p>Лендинг, портфолио, до 5 страниц. Быстрый старт.</p>
                 <div class="price-tag">от 500 ₽ <span class="arrow">→</span></div>
             </div>
+            
             <div class="card">
                 <div class="card-top">
                     <h3>Средний сайт</h3>
                     <span class="icon">⊡</span>
                 </div>
-                <p>Формы, галерея, карта, до 10 страниц</p>
+                <p>Формы, галерея, карта, до 10 страниц для бизнеса.</p>
                 <div class="price-tag">от 1 200 ₽ <span class="arrow">→</span></div>
             </div>
+            
             <div class="card">
                 <div class="card-top">
                     <h3>Сложный сайт</h3>
                     <span class="icon">⊕</span>
                 </div>
-                <p>Интернет-магазин, каталог, личный кабинет</p>
+                <p>Интернет-магазин, каталог с фильтрацией, личный кабинет.</p>
                 <div class="price-tag">от 3 000 ₽ <span class="arrow">→</span></div>
             </div>
         </div>
-
-        <!-- Прайс -->
+        
         <div class="section-title">
-            <span>Прайс</span><span class="line"></span>
+            <span>💰 Прайс</span>
+            <span class="line"></span>
         </div>
+        
         <div class="price-card">
             <div class="price-row"><span class="price-name">Бот с логикой</span><span class="price-value">1 000 ₽</span></div>
             <div class="price-row"><span class="price-name">Магазин в Telegram</span><span class="price-value accent">3 000 ₽</span></div>
@@ -484,18 +796,18 @@
             <div class="price-row"><span class="price-name">Сложный сайт</span><span class="price-value accent">3 000 ₽</span></div>
             <div class="price-row"><span class="price-name">Доработки (час)</span><span class="price-value">1 000 ₽</span></div>
         </div>
-
-        <!-- Форма -->
+        
         <div class="form-card">
-            <div class="form-title">Заявка</div>
+            <div class="form-title">📩 Оставить заявку</div>
             <div class="form-sub">Ответим в Telegram в течение часа</div>
+            
             <form id="orderForm">
-                <label>Имя</label>
+                <label>Ваше имя</label>
                 <input type="text" id="name" placeholder="Алексей" required>
-
-                <label>Telegram</label>
+                
+                <label>Telegram username</label>
                 <input type="text" id="tg_username" placeholder="@alex_dev" required>
-
+                
                 <label>Тип проекта</label>
                 <select id="project_type">
                     <optgroup label="Telegram Mini Apps">
@@ -515,47 +827,62 @@
                         <option>Доработка / Другое</option>
                     </optgroup>
                 </select>
-
+                
                 <button type="submit" class="btn-submit">Отправить →</button>
             </form>
-            <div id="formMsg" style="margin-top:14px; font-size:14px; color:#60a5fa; text-align:center;"></div>
+            <div id="formMsg"></div>
         </div>
-
-        <!-- Telegram -->
+        
         <div class="tg-fixed">
-            <a href="https://t.me/Ffghvtc" class="btn-tg-big">Связаться в Telegram →</a>
+            <a href="https://t.me/Ffghvtc" class="btn-tg-big" target="_blank">✈ Связаться в Telegram</a>
             <div class="sub">Обсудим всё в чате</div>
         </div>
-
+        
+        <div class="counter-container">
+            <span>👥 Сейчас на сайте:</span>
+            <a href="https://whos.amung.us/stats/botstudio/" target="_blank">
+                <img src="https://whos.amung.us/widget/botstudio/" 
+                     width="50" height="20" border="0" 
+                     alt="Счётчик посетителей" 
+                     title="Сколько людей сейчас на сайте">
+            </a>
+        </div>
+        
         <div class="footer">
             © 2026 MiniLab — разработка под ключ
         </div>
-
+        
     </div>
-
+    
     <script>
         document.getElementById('orderForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            
             const name = document.getElementById('name').value.trim();
             const tg = document.getElementById('tg_username').value.trim();
             const type = document.getElementById('project_type').value;
-
+            const msgDiv = document.getElementById('formMsg');
+            
             if (!name || !tg) {
-                document.getElementById('formMsg').textContent = '⚠️ Заполните все поля';
-                document.getElementById('formMsg').style.color = '#f87171';
+                msgDiv.textContent = '⚠️ Заполните все поля';
+                msgDiv.style.color = '#f87171';
                 return;
             }
-
-            const msg = `📩 Заявка%0AИмя: ${name}%0ATelegram: ${tg}%0AПроект: ${type}`;
-            const tgLink = `https://t.me/Ffghvtc?text=${msg}`;
-
-            window.open(tgLink, '_blank');
-
-            document.getElementById('formMsg').textContent = '✅ Переходим в Telegram...';
-            document.getElementById('formMsg').style.color = '#34d399';
+            
+            const message = `📩 Заявка%0AИмя: ${name}%0ATelegram: ${tg}%0AПроект: ${type}`;
+            const url = `https://t.me/Ffghvtc?text=${message}`;
+            
+            window.open(url, '_blank');
+            
+            msgDiv.textContent = '✅ Переходим в Telegram...';
+            msgDiv.style.color = '#34d399';
             document.getElementById('orderForm').reset();
+            
+            setTimeout(() => {
+                msgDiv.textContent = '';
+            }, 5000);
         });
     </script>
-
+    
 </body>
 </html>
