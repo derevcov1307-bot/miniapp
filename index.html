@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>MiniApp Lab | Разработка</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0f;
+            color: #e8edf5;
+            padding: 20px 16px 60px;
+            line-height: 1.5;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 20% 50%, rgba(59, 130, 246, 0.06) 0%, transparent 60%),
+                        radial-gradient(ellipse at 80% 20%, rgba(139, 92, 246, 0.06) 0%, transparent 50%);
+            z-index: -1;
+            animation: bgPulse 20s ease-in-out infinite alternate;
+        }
+        @keyframes bgPulse {
+            0% { transform: scale(1) rotate(0deg); }
+            100% { transform: scale(1.08) rotate(3deg); }
+        }
+
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+            padding-top: 8px;
+            animation: fadeDown 0.6s ease-out;
+        }
+        .logo {
+            font-weight: 700;
+            font-size: 22px;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #f8fafc, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .logo .accent {
+            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .btn-outline {
+            background: transparent;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #94a3b8;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.06);
+            transition: all 0.3s ease;
+        }
+        .btn-outline:hover {
+            border-color: rgba(255,255,255,0.15);
+            color: #f8fafc;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 32px 0 28px;
+            animation: fadeUp 0.8s ease-out;
+        }
+        .hero .tag {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 500;
+            color: #60a5fa;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            background: rgba(59,130,246,0.08);
+            padding: 4px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(59,130,246,0.06);
+            margin-bottom: 16px;
+        }
+        .hero h1 {
+            font-size: 34px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 14px;
+            letter-spacing: -0.5px;
+        }
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p {
+            color: #64748b;
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 28px;
+            max-width: 90%;
+        }
+        .hero .btn-primary {
+            display: inline-block;
+            background: linear-gradient(135deg, #3b82f6, #7c3aed);
+            color: #fff;
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.25);
+            transition: all 0.3s ease;
+            border: none;
+        }
+        .hero .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 48px rgba(59, 130, 246, 0.35);
+        }
+
+        /* Section titles */
+        .section-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin: 40px 0 14px;
+            letter-spacing: -0.3px;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-title .line {
+            flex: 1;
+            height: 1px;
+            background: rgba(255,255,255,0.04);
+        }
+
+        /* Cards — minimal glass */
+        .card-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            animation: fadeUp 0.8s ease-out;
+        }
+        .card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 16px;
+            padding: 16px 18px;
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            background: rgba(255,255,255,0.04);
+            border-color: rgba(255,255,255,0.08);
+            transform: translateX(4px);
+        }
+        .card .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .card h3 {
+            font-size: 15px;
+            font-weight: 500;
+            color: #f1f5f9;
+            letter-spacing: -0.2px;
+        }
+        .card .icon {
+            font-size: 18px;
+            color: #475569;
+            width: 28px;
+            text-align: center;
+            font-weight: 300;
+        }
+        .card p {
+            color: #64748b;
+            font-size: 13px;
+            margin-top: 2px;
+            padding-left: 28px;
+        }
+        .card .price-tag {
+            display: inline-block;
+            margin-top: 6px;
+            padding-left: 28px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #60a5fa;
+            letter-spacing: 0.3px;
+        }
+        .card .arrow {
+            color: #334155;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        .card:hover .arrow {
+            color: #60a5fa;
+            transform: translateX(4px);
+        }
+
+        /* Price card */
+        .price-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 16px;
+            padding: 4px 16px;
+            animation: fadeUp 0.9s ease-out;
+        }
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            font-size: 14px;
+        }
+        .price-row:last-child {
+            border-bottom: none;
+        }
+        .price-name {
+            color: #94a3b8;
+            font-weight: 400;
+        }
+        .price-value {
+            font-weight: 500;
+            color: #e8edf5;
+            letter-spacing: 0.2px;
+        }
+        .price-value.accent {
+            color: #60a5fa;
+        }
+
+        /* Form */
+        .form-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 20px;
+            padding: 24px 20px;
+            margin: 28px 0;
+            animation: fadeUp 1s ease-out;
+        }
+        .form-card .form-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 2px;
+            letter-spacing: -0.3px;
+        }
+        .form-card .form-sub {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 18px;
+        }
+        .form-card label {
+            font-size: 12px;
+            font-weight: 500;
+            color: #64748b;
+            display: block;
+            margin: 14px 0 4px;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+        .form-card input, .form-card select {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.04);
+            background: rgba(0,0,0,0.3);
+            color: #f1f5f9;
+            font-size: 15px;
+            outline: none;
+            transition: 0.3s;
+            font-family: inherit;
+        }
+        .form-card input:focus, .form-card select:focus {
+            border-color: rgba(59, 130, 246, 0.3);
+            background: rgba(0,0,0,0.5);
+        }
+        .form-card input::placeholder {
+            color: #334155;
+        }
+        .form-card select option {
+            background: #0a0a0f;
+            color: #e8edf5;
+        }
+        .form-card .btn-submit {
+            width: 100%;
+            margin-top: 20px;
+            background: linear-gradient(135deg, #3b82f6, #7c3aed);
+            color: #fff;
+            padding: 16px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .form-card .btn-submit:hover {
+            opacity: 0.9;
+            transform: scale(1.01);
+        }
+
+        /* Footer CTA */
+        .tg-fixed {
+            margin-top: 28px;
+            text-align: center;
+            animation: fadeUp 1.1s ease-out;
+        }
+        .tg-fixed .btn-tg-big {
+            display: inline-block;
+            background: rgba(255,255,255,0.04);
+            padding: 16px 48px;
+            border-radius: 60px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #f1f5f9;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.06);
+            transition: all 0.3s ease;
+        }
+        .tg-fixed .btn-tg-big:hover {
+            background: rgba(255,255,255,0.06);
+            border-color: rgba(255,255,255,0.12);
+        }
+        .tg-fixed .sub {
+            color: #334155;
+            font-size: 13px;
+            margin-top: 8px;
+        }
+
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #1e293b;
+            font-size: 12px;
+            letter-spacing: 0.3px;
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeDown {
+            from { opacity: 0; transform: translateY(-16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">✦ <span class="accent">Mini</span>Lab</div>
+            <a href="https://t.me/Ffghvtc" class="btn-outline">Связаться</a>
+        </div>
+
+        <!-- Hero -->
+        <div class="hero">
+            <div class="tag">AI-Driven Development</div>
+            <h1>Создаём <span class="highlight">Telegram Mini Apps</span><br>и сайты</h1>
+            <p>Современные веб-решения и боты внутри Telegram — от идеи до запуска.</p>
+            <a href="https://t.me/Ffghvtc" class="btn-primary">Начать проект →</a>
+        </div>
+
+        <!-- Telegram Mini Apps -->
+        <div class="section-title">
+            <span>Mini Apps</span><span class="line"></span>
+        </div>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-top">
+                    <h3>Бот с логикой</h3>
+                    <span class="icon">⌘</span>
+                </div>
+                <p>Команды, регистрация, уведомления</p>
+                <div class="price-tag">от 1 000 ₽ <span class="arrow">→</span></div>
+            </div>
+            <div class="card">
+                <div class="card-top">
+                    <h3>Магазин в Telegram</h3>
+                    <span class="icon">◈</span>
+                </div>
+                <p>Каталог, корзина, оплата внутри мессенджера</p>
+                <div class="price-tag">от 3 000 ₽ <span class="arrow">→</span></div>
+            </div>
+            <div class="card">
+                <div class="card-top">
+                    <h3>Админ-панель</h3>
+                    <span class="icon">▣</span>
+                </div>
+                <p>Управление пользователями, контентом, аналитика</p>
+                <div class="price-tag">от 5 000 ₽ <span class="arrow">→</span></div>
+            </div>
+            <div class="card">
+                <div class="card-top">
+                    <h3>Игры и квизы</h3>
+                    <span class="icon">◇</span>
+                </div>
+                <p>Интерактив, викторины, геймификация</p>
+                <div class="price-tag">от 4 000 ₽ <span class="arrow">→</span></div>
+            </div>
+            <div class="card">
+                <div class="card-top">
+                    <h3>Бот с AI</h3>
+                    <span class="icon">✦</span>
+                </div>
+                <p>ChatGPT-ассистент, генерация, умная поддержка</p>
+                <div class="price-tag">от 5 500 ₽ <span class="arrow">→</span></div>
+            </div>
+            <div class="card">
+                <div class="card-top">
+                    <h3>Корпоративный портал</h3>
+                    <span class="icon">⊞</span>
+                </div>
+                <p>Личные кабинеты, базы данных, сложные сценарии</p>
+                <div class="price-tag">от 7 000 ₽ <span class="arrow">→</span></div>
+            </div>
+        </div>
+
+        <!-- Сайты -->
+        <div class="section-title">
+            <span>Сайты</span><span class="line"></span>
+        </div>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-top">
+                    <h3>Сайт-визитка</h3>
+                    <span class="icon">⎔</span>
+                </div>
+                <p>Лендинг, портфолио, до 5 страниц</p>
+                <div class="price-tag">от 500 ₽ <span class="arrow">→</span></div>
+            </div>
+            <div class="card">
+                <div class="card-top">
+                    <h3>Средний сайт</h3>
+                    <span class="icon">⊡</span>
+                </div>
+                <p>Формы, галерея, карта, до 10 страниц</p>
+                <div class="price-tag">от 1 200 ₽ <span class="arrow">→</span></div>
+            </div>
+            <div class="card">
+                <div class="card-top">
+                    <h3>Сложный сайт</h3>
+                    <span class="icon">⊕</span>
+                </div>
+                <p>Интернет-магазин, каталог, личный кабинет</p>
+                <div class="price-tag">от 3 000 ₽ <span class="arrow">→</span></div>
+            </div>
+        </div>
+
+        <!-- Прайс -->
+        <div class="section-title">
+            <span>Прайс</span><span class="line"></span>
+        </div>
+        <div class="price-card">
+            <div class="price-row"><span class="price-name">Бот с логикой</span><span class="price-value">1 000 ₽</span></div>
+            <div class="price-row"><span class="price-name">Магазин в Telegram</span><span class="price-value accent">3 000 ₽</span></div>
+            <div class="price-row"><span class="price-name">Игры / квизы</span><span class="price-value accent">4 000 ₽</span></div>
+            <div class="price-row"><span class="price-name">Админ-панель</span><span class="price-value accent">5 000 ₽</span></div>
+            <div class="price-row"><span class="price-name">Бот с AI</span><span class="price-value accent">5 500 ₽</span></div>
+            <div class="price-row"><span class="price-name">Корпоративный портал</span><span class="price-value">7 000 ₽</span></div>
+            <div class="price-row"><span class="price-name">Сайт-визитка</span><span class="price-value">500 ₽</span></div>
+            <div class="price-row"><span class="price-name">Средний сайт</span><span class="price-value">1 200 ₽</span></div>
+            <div class="price-row"><span class="price-name">Сложный сайт</span><span class="price-value accent">3 000 ₽</span></div>
+            <div class="price-row"><span class="price-name">Доработки (час)</span><span class="price-value">1 000 ₽</span></div>
+        </div>
+
+        <!-- Форма -->
+        <div class="form-card">
+            <div class="form-title">Заявка</div>
+            <div class="form-sub">Ответим в Telegram в течение часа</div>
+            <form id="orderForm">
+                <label>Имя</label>
+                <input type="text" id="name" placeholder="Алексей" required>
+
+                <label>Telegram</label>
+                <input type="text" id="tg_username" placeholder="@alex_dev" required>
+
+                <label>Тип проекта</label>
+                <select id="project_type">
+                    <optgroup label="Telegram Mini Apps">
+                        <option>Бот с логикой</option>
+                        <option>Магазин в Telegram</option>
+                        <option>Админ-панель</option>
+                        <option>Игры / квизы</option>
+                        <option>Бот с AI</option>
+                        <option>Корпоративный портал</option>
+                    </optgroup>
+                    <optgroup label="Сайты">
+                        <option>Сайт-визитка</option>
+                        <option>Средний сайт</option>
+                        <option>Сложный сайт</option>
+                    </optgroup>
+                    <optgroup label="Другое">
+                        <option>Доработка / Другое</option>
+                    </optgroup>
+                </select>
+
+                <button type="submit" class="btn-submit">Отправить →</button>
+            </form>
+            <div id="formMsg" style="margin-top:14px; font-size:14px; color:#60a5fa; text-align:center;"></div>
+        </div>
+
+        <!-- Telegram -->
+        <div class="tg-fixed">
+            <a href="https://t.me/Ffghvtc" class="btn-tg-big">Связаться в Telegram →</a>
+            <div class="sub">Обсудим всё в чате</div>
+        </div>
+
+        <div class="footer">
+            © 2026 MiniLab — разработка под ключ
+        </div>
+
+    </div>
+
+    <script>
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const tg = document.getElementById('tg_username').value.trim();
+            const type = document.getElementById('project_type').value;
+
+            if (!name || !tg) {
+                document.getElementById('formMsg').textContent = '⚠️ Заполните все поля';
+                document.getElementById('formMsg').style.color = '#f87171';
+                return;
+            }
+
+            const msg = `📩 Заявка%0AИмя: ${name}%0ATelegram: ${tg}%0AПроект: ${type}`;
+            const tgLink = `https://t.me/Ffghvtc?text=${msg}`;
+
+            window.open(tgLink, '_blank');
+
+            document.getElementById('formMsg').textContent = '✅ Переходим в Telegram...';
+            document.getElementById('formMsg').style.color = '#34d399';
+            document.getElementById('orderForm').reset();
+        });
+    </script>
+
+</body>
+</html>
