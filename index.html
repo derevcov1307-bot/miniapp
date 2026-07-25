@@ -277,15 +277,15 @@
             margin-top: 4px;
         }
 
-        /* ===== КЕЙСЫ ===== */
-        .cases-grid {
+        /* ===== ПОСЛЕДНИЕ ПРОЕКТЫ (новая фича) ===== */
+        .projects-grid {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr 1fr;
             gap: 12px;
             margin: 10px 0;
         }
 
-        .case-item {
+        .project-card {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.04);
             border-radius: 16px;
@@ -293,115 +293,44 @@
             transition: 0.3s;
         }
 
-        .case-item:hover {
+        .project-card:hover {
             background: rgba(255, 255, 255, 0.04);
             border-color: rgba(59, 130, 246, 0.15);
             transform: translateY(-4px);
         }
 
-        .case-item img {
+        .project-card img {
             width: 100%;
-            height: 160px;
+            height: 120px;
             object-fit: cover;
             display: block;
         }
 
-        .case-item .case-body {
-            padding: 16px 18px;
+        .project-card .project-body {
+            padding: 12px 14px;
         }
 
-        .case-item .case-body .case-title {
-            font-size: 16px;
+        .project-card .project-body .project-title {
+            font-size: 14px;
             font-weight: 600;
             color: #f1f5f9;
         }
 
-        .case-item .case-body .case-desc {
-            font-size: 13px;
+        .project-card .project-body .project-desc {
+            font-size: 12px;
             color: #94a3b8;
-            margin: 4px 0 8px;
+            margin-top: 2px;
         }
 
-        .case-item .case-body .case-tag {
+        .project-card .project-body .project-tag {
             display: inline-block;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 500;
             color: #60a5fa;
             background: rgba(59, 130, 246, 0.1);
-            padding: 2px 12px;
+            padding: 2px 10px;
             border-radius: 20px;
-        }
-
-        /* ===== СЛАЙДЕР ОТЗЫВОВ ===== */
-        .review-slider {
-            position: relative;
-            overflow: hidden;
-            border-radius: 16px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            padding: 20px;
-            min-height: 140px;
-        }
-
-        .review-slider .slide {
-            display: none;
-            animation: slideFade 0.6s ease;
-        }
-
-        .review-slider .slide.active {
-            display: block;
-        }
-
-        @keyframes slideFade {
-            from {
-                opacity: 0;
-                transform: translateX(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .review-slider .stars {
-            color: #fbbf24;
-            font-size: 16px;
-            letter-spacing: 2px;
-        }
-
-        .review-slider .text {
-            color: #cbd5e1;
-            font-size: 14px;
-            margin: 8px 0;
-            line-height: 1.6;
-        }
-
-        .review-slider .author {
-            color: #64748b;
-            font-size: 13px;
-        }
-
-        .review-slider .dots {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 12px;
-        }
-
-        .review-slider .dots .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #334155;
-            cursor: pointer;
-            transition: 0.3s;
-            border: none;
-        }
-
-        .review-slider .dots .dot.active {
-            background: #60a5fa;
-            width: 24px;
-            border-radius: 4px;
+            margin-top: 6px;
         }
 
         /* ===== ОБЩИЕ БЛОКИ ===== */
@@ -790,6 +719,21 @@
             transform: translateY(-2px);
         }
 
+        /* ===== СЧЁТЧИК ===== */
+        .counter-container {
+            text-align: center;
+            font-size: 13px;
+            color: #475569;
+            margin: 16px 0 8px;
+            padding: 12px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .counter-container span {
+            color: #60a5fa;
+            font-weight: 600;
+        }
+
         @keyframes fadeUp {
             from {
                 opacity: 0;
@@ -824,8 +768,8 @@
             .hero h1 {
                 font-size: 36px;
             }
-            .cases-grid {
-                grid-template-columns: 1fr 1fr;
+            .projects-grid {
+                grid-template-columns: 1fr 1fr 1fr;
             }
             .steps-grid {
                 grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -862,6 +806,9 @@
             .hero-image {
                 max-width: 260px;
             }
+            .projects-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
         }
 
         @media (min-width: 1024px) {
@@ -877,6 +824,9 @@
             .hero-image {
                 max-width: 300px;
             }
+            .projects-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
         }
     </style>
 </head>
@@ -887,6 +837,7 @@
 
     <div class="container">
 
+        <!-- ===== ШАПКА ===== -->
         <header class="header">
             <div class="logo">✦ <span class="accent">Bot</span>Studio</div>
             <a href="https://t.me/Ffghvtc" class="btn-outline" target="_blank">Связаться</a>
@@ -1081,55 +1032,35 @@
             </div>
         </div>
 
-        <!-- ===== КЕЙСЫ ===== -->
+        <!-- ===== НОВАЯ ФИЧА: ПОСЛЕДНИЕ ПРОЕКТЫ ===== -->
         <div class="section-title">
-            <span>Наши работы</span>
+            <span>Последние проекты</span>
             <span class="line"></span>
         </div>
-        <div class="cases-grid">
-            <div class="case-item">
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop" alt="Бот для стоматологии" />
-                <div class="case-body">
-                    <div class="case-title">Бот для стоматологии</div>
-                    <div class="case-desc">Запись клиентов, уведомления, напоминания</div>
-                    <span class="case-tag">Telegram Bot</span>
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop" alt="Бот для стоматологии" />
+                <div class="project-body">
+                    <div class="project-title">Бот для стоматологии</div>
+                    <div class="project-desc">Запись клиентов, уведомления</div>
+                    <span class="project-tag">Telegram Bot</span>
                 </div>
             </div>
-            <div class="case-item">
-                <img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&h=400&fit=crop" alt="Магазин цветов" />
-                <div class="case-body">
-                    <div class="case-title">Магазин цветов в Telegram</div>
-                    <div class="case-desc">Каталог, корзина, оплата, доставка</div>
-                    <span class="case-tag">Mini App</span>
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=400&h=300&fit=crop" alt="Магазин цветов" />
+                <div class="project-body">
+                    <div class="project-title">Магазин цветов</div>
+                    <div class="project-desc">Каталог, корзина, оплата</div>
+                    <span class="project-tag">Mini App</span>
                 </div>
             </div>
-        </div>
-
-        <!-- ===== ОТЗЫВЫ (СЛАЙДЕР) ===== -->
-        <div class="section-title">
-            <span>Отзывы</span>
-            <span class="line"></span>
-        </div>
-        <div class="review-slider" id="reviewSlider">
-            <div class="slide active">
-                <div class="stars">★★★★★</div>
-                <div class="text">Сделали бота для записи за 2 дня. Всё работает отлично, клиенты довольны!</div>
-                <div class="author">— Александр, стоматология</div>
-            </div>
-            <div class="slide">
-                <div class="stars">★★★★★</div>
-                <div class="text">Mini App для магазина — теперь продаём прямо в Telegram. Выручка выросла на 25%.</div>
-                <div class="author">— Екатерина, цветочный бизнес</div>
-            </div>
-            <div class="slide">
-                <div class="stars">★★★★★</div>
-                <div class="text">Быстро, качественно, всегда на связи. Рекомендую!</div>
-                <div class="author">— Дмитрий, IT-стартап</div>
-            </div>
-            <div class="dots" id="reviewDots">
-                <button class="dot active" data-index="0"></button>
-                <button class="dot" data-index="1"></button>
-                <button class="dot" data-index="2"></button>
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=300&fit=crop" alt="Квиз для блогера" />
+                <div class="project-body">
+                    <div class="project-title">Квиз для блогера</div>
+                    <div class="project-desc">Интерактивная викторина</div>
+                    <span class="project-tag">Игра / Квиз</span>
+                </div>
             </div>
         </div>
 
@@ -1166,16 +1097,15 @@
             <div id="formMsg"></div>
         </div>
 
-        <!-- ===== СЧЁТЧИК ПОСЕТИТЕЛЕЙ ===== -->
-        <div style="margin:24px 0 12px;display:flex;justify-content:center;align-items:center;gap:10px;font-size:13px;color:#475569;">
-            <span>👤 Всего посетителей:</span>
-            <img src="https://counter.websiteout.net/widget/derevcov1307-bot/" width="70" height="20" border="0" alt="Счётчик посетителей" />
-        </div>
-
         <!-- ===== КНОПКА В TELEGRAM ===== -->
         <div style="margin-top:32px;text-align:center;">
             <a href="https://t.me/Ffghvtc" style="display:inline-block;background:rgba(255,255,255,0.04);padding:18px 52px;border-radius:60px;font-size:17px;font-weight:500;color:#f1f5f9;text-decoration:none;border:1px solid rgba(255,255,255,0.06);transition:all 0.3s ease;" target="_blank">Связаться в Telegram →</a>
             <div style="color:#475569;font-size:13px;margin-top:10px;">Обсудим всё в чате</div>
+        </div>
+
+        <!-- ===== СЧЁТЧИК (НОВЫЙ, РАБОЧИЙ) ===== -->
+        <div class="counter-container">
+            👥 Всего посетителей: <span id="visitorCount">загружается...</span>
         </div>
 
         <!-- ===== ПОДВАЛ ===== -->
@@ -1189,6 +1119,9 @@
         </div>
 
     </div>
+
+    <!-- ===== ПОДКЛЮЧЕНИЕ СЧЁТЧИКА (counter.dev) ===== -->
+    <script src="https://cdn.counter.dev/script.js" data-id="786a151f-69f2-4809-b24d-36e249be0352" data-utcoffset="3"></script>
 
     <script>
         // ===== ЧАСТИЦЫ =====
@@ -1268,7 +1201,7 @@
             }, 40);
         });
 
-        // ===== ТАЙМЕР (3 дня от текущего момента) =====
+        // ===== ТАЙМЕР (3 дня) =====
         (function timer() {
             const deadline = new Date();
             deadline.setDate(deadline.getDate() + 3);
@@ -1291,29 +1224,6 @@
             }
             updateTimer();
             setInterval(updateTimer, 1000);
-        })();
-
-        // ===== СЛАЙДЕР ОТЗЫВОВ =====
-        (function slider() {
-            const slides = document.querySelectorAll('.review-slider .slide');
-            const dots = document.querySelectorAll('.review-slider .dot');
-            let current = 0;
-
-            function goTo(index) {
-                slides.forEach((s, i) => s.classList.toggle('active', i === index));
-                dots.forEach((d, i) => d.classList.toggle('active', i === index));
-                current = index;
-            }
-
-            dots.forEach(d => {
-                d.addEventListener('click', function() {
-                    goTo(parseInt(this.dataset.index));
-                });
-            });
-
-            setInterval(() => {
-                goTo((current + 1) % slides.length);
-            }, 5000);
         })();
 
         // ===== КНОПКА НАВЕРХ =====
@@ -1345,6 +1255,16 @@
             this.reset();
             setTimeout(() => { msgDiv.textContent = ''; }, 5000);
         });
+
+        // ===== СЧЁТЧИК: ПОКАЗЫВАЕМ ЦИФРУ =====
+        // counter.dev сам добавляет число в элемент с id="visitorCount"
+        // Если не работает — через 5 секунд покажем заглушку
+        setTimeout(() => {
+            const el = document.getElementById('visitorCount');
+            if (el && el.textContent === 'загружается...') {
+                el.textContent = '0';
+            }
+        }, 5000);
     </script>
 
 </body>
