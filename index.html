@@ -7,8 +7,6 @@
     <title>BotStudio — разработка Telegram Mini Apps и ботов</title>
     <meta name="description" content="BotStudio создаёт Telegram Mini Apps, ботов с AI, интернет-магазины, админ-панели и сайты под ключ. Цены от 500 ₽." />
     <link rel="canonical" href="https://derevcov1307-bot.github.io/miniapp/" />
-    <meta property="og:title" content="BotStudio — разработка Telegram Mini Apps и ботов" />
-    <meta property="og:description" content="Создаём Telegram Mini Apps, ботов с AI и сайты под ключ. Цены от 500 ₽." />
 
     <style>
         * {
@@ -16,9 +14,11 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         html {
             scroll-behavior: smooth;
         }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
             background: #0a0a0f;
@@ -29,6 +29,7 @@
             overflow-x: hidden;
         }
 
+        /* ===== ЧАСТИЦЫ ===== */
         #particles-canvas {
             position: fixed;
             top: 0;
@@ -46,6 +47,7 @@
             z-index: 1;
         }
 
+        /* ===== ШАПКА ===== */
         .header {
             display: flex;
             justify-content: space-between;
@@ -54,6 +56,7 @@
             padding-top: 8px;
             animation: fadeDown 0.6s ease-out;
         }
+
         .logo {
             font-weight: 700;
             font-size: 24px;
@@ -63,12 +66,14 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+
         .logo .accent {
             background: linear-gradient(135deg, #60a5fa, #a78bfa);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+
         .btn-outline {
             background: rgba(255, 255, 255, 0.05);
             padding: 10px 24px;
@@ -81,6 +86,7 @@
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
         }
+
         .btn-outline:hover {
             background: rgba(59, 130, 246, 0.2);
             border-color: rgba(59, 130, 246, 0.4);
@@ -88,19 +94,23 @@
             transform: scale(1.05);
         }
 
+        /* ===== ГЕРОЙ ===== */
         .hero {
             padding: 20px 0 28px;
             animation: fadeUp 0.6s ease-out;
         }
+
         .hero-wrapper {
             display: flex;
             flex-direction: column;
             gap: 24px;
             align-items: center;
         }
+
         .hero-content {
             flex: 1;
         }
+
         .hero-image {
             flex: 0 0 auto;
             width: 100%;
@@ -109,11 +119,13 @@
             overflow: hidden;
             box-shadow: 0 20px 60px rgba(59, 130, 246, 0.15);
         }
+
         .hero-image img {
             width: 100%;
             height: auto;
             display: block;
         }
+
         .hero .tag {
             display: inline-block;
             font-size: 12px;
@@ -128,6 +140,7 @@
             margin-bottom: 16px;
             backdrop-filter: blur(10px);
         }
+
         .hero h1 {
             font-size: 32px;
             font-weight: 700;
@@ -135,18 +148,21 @@
             margin-bottom: 14px;
             letter-spacing: -0.5px;
         }
+
         .hero h1 .highlight {
             background: linear-gradient(135deg, #60a5fa, #a78bfa);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+
         .hero p {
             color: #94a3b8;
             font-size: 16px;
             line-height: 1.7;
             margin-bottom: 28px;
         }
+
         .hero .btn-primary {
             display: inline-block;
             background: linear-gradient(135deg, #3b82f6, #7c3aed);
@@ -161,11 +177,234 @@
             border: none;
             cursor: pointer;
         }
+
         .hero .btn-primary:hover {
             transform: translateY(-3px);
             box-shadow: 0 12px 48px rgba(59, 130, 246, 0.5);
         }
 
+        /* ===== ТАЙМЕР ===== */
+        .timer-block {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        .timer-block .timer-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #fbbf24;
+            margin-bottom: 8px;
+        }
+
+        .timer-block .timer-display {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .timer-block .timer-display .time-unit {
+            background: rgba(255, 255, 255, 0.04);
+            padding: 8px 14px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            min-width: 50px;
+        }
+
+        .timer-block .timer-display .time-label {
+            font-size: 11px;
+            font-weight: 400;
+            color: #64748b;
+            display: block;
+            margin-top: 2px;
+        }
+
+        .timer-block .timer-sub {
+            font-size: 13px;
+            color: #94a3b8;
+            margin-top: 10px;
+        }
+
+        /* ===== ЭТАПЫ РАБОТЫ ===== */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .step-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 16px;
+            padding: 16px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .step-item:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(59, 130, 246, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .step-item .step-num {
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 700;
+            color: #60a5fa;
+            background: rgba(59, 130, 246, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 8px;
+        }
+
+        .step-item .step-name {
+            font-size: 14px;
+            font-weight: 500;
+            color: #f1f5f9;
+        }
+
+        .step-item .step-desc {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 4px;
+        }
+
+        /* ===== КЕЙСЫ ===== */
+        .cases-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin: 10px 0;
+        }
+
+        .case-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .case-item:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(59, 130, 246, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .case-item img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .case-item .case-body {
+            padding: 16px 18px;
+        }
+
+        .case-item .case-body .case-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #f1f5f9;
+        }
+
+        .case-item .case-body .case-desc {
+            font-size: 13px;
+            color: #94a3b8;
+            margin: 4px 0 8px;
+        }
+
+        .case-item .case-body .case-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 500;
+            color: #60a5fa;
+            background: rgba(59, 130, 246, 0.1);
+            padding: 2px 12px;
+            border-radius: 20px;
+        }
+
+        /* ===== СЛАЙДЕР ОТЗЫВОВ ===== */
+        .review-slider {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 20px;
+            min-height: 140px;
+        }
+
+        .review-slider .slide {
+            display: none;
+            animation: slideFade 0.6s ease;
+        }
+
+        .review-slider .slide.active {
+            display: block;
+        }
+
+        @keyframes slideFade {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .review-slider .stars {
+            color: #fbbf24;
+            font-size: 16px;
+            letter-spacing: 2px;
+        }
+
+        .review-slider .text {
+            color: #cbd5e1;
+            font-size: 14px;
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+
+        .review-slider .author {
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        .review-slider .dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .review-slider .dots .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #334155;
+            cursor: pointer;
+            transition: 0.3s;
+            border: none;
+        }
+
+        .review-slider .dots .dot.active {
+            background: #60a5fa;
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        /* ===== ОБЩИЕ БЛОКИ ===== */
         .section-title {
             font-size: 20px;
             font-weight: 600;
@@ -176,6 +415,7 @@
             align-items: center;
             gap: 14px;
         }
+
         .section-title .line {
             flex: 1;
             height: 1px;
@@ -198,6 +438,7 @@
             grid-template-columns: 1fr;
             gap: 12px;
         }
+
         .card {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.04);
@@ -210,16 +451,35 @@
             animation: cardAppear 0.6s ease-out forwards;
             backdrop-filter: blur(5px);
         }
-        .card:nth-child(1) { animation-delay: 0.05s; }
-        .card:nth-child(2) { animation-delay: 0.1s; }
-        .card:nth-child(3) { animation-delay: 0.15s; }
-        .card:nth-child(4) { animation-delay: 0.2s; }
-        .card:nth-child(5) { animation-delay: 0.25s; }
-        .card:nth-child(6) { animation-delay: 0.3s; }
+
+        .card:nth-child(1) {
+            animation-delay: 0.05s;
+        }
+        .card:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+        .card:nth-child(3) {
+            animation-delay: 0.15s;
+        }
+        .card:nth-child(4) {
+            animation-delay: 0.2s;
+        }
+        .card:nth-child(5) {
+            animation-delay: 0.25s;
+        }
+        .card:nth-child(6) {
+            animation-delay: 0.3s;
+        }
 
         @keyframes cardAppear {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .card:hover {
@@ -236,6 +496,7 @@
             flex-wrap: wrap;
             gap: 8px;
         }
+
         .card h3 {
             font-size: 16px;
             font-weight: 500;
@@ -245,6 +506,7 @@
             align-items: center;
             gap: 10px;
         }
+
         .card p {
             color: #94a3b8;
             font-size: 14px;
@@ -252,6 +514,7 @@
             padding-left: 34px;
             line-height: 1.6;
         }
+
         .card .price-tag {
             display: inline-block;
             margin-top: 10px;
@@ -261,16 +524,19 @@
             letter-spacing: 0.3px;
             padding-left: 34px;
         }
+
         .card .arrow {
             color: #334155;
             font-size: 14px;
             transition: 0.3s;
             margin-left: 4px;
         }
+
         .card:hover .arrow {
             color: #60a5fa;
             transform: translateX(6px);
         }
+
         .card .order-btn {
             display: inline-block;
             margin-top: 10px;
@@ -286,6 +552,7 @@
             border: none;
             cursor: pointer;
         }
+
         .card .order-btn:hover {
             transform: scale(1.05);
             box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
@@ -297,13 +564,13 @@
             overflow: hidden;
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
         }
+
         .photo-block img {
             width: 100%;
             height: auto;
             display: block;
         }
 
-        /* ===== ПРАЙС В 2 КОЛОНКИ ===== */
         .price-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -314,6 +581,7 @@
             padding: 16px;
             backdrop-filter: blur(5px);
         }
+
         .price-item {
             display: flex;
             flex-direction: column;
@@ -323,95 +591,26 @@
             border: 1px solid rgba(255, 255, 255, 0.03);
             transition: 0.3s;
         }
+
         .price-item:hover {
             background: rgba(255, 255, 255, 0.04);
             border-color: rgba(59, 130, 246, 0.1);
         }
+
         .price-item .name {
             font-size: 13px;
             color: #94a3b8;
         }
+
         .price-item .value {
             font-size: 18px;
             font-weight: 600;
             color: #60a5fa;
             margin-top: 2px;
         }
+
         .price-item .value.accent {
             color: #a78bfa;
-        }
-
-        /* ===== ОТЗЫВЫ ===== */
-        .review-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin: 10px 0;
-        }
-        .review-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 16px;
-            padding: 16px;
-            transition: 0.3s;
-        }
-        .review-card:hover {
-            background: rgba(255, 255, 255, 0.04);
-            border-color: rgba(59, 130, 246, 0.1);
-        }
-        .review-card .stars {
-            color: #fbbf24;
-            font-size: 14px;
-            letter-spacing: 2px;
-        }
-        .review-card .text {
-            color: #cbd5e1;
-            font-size: 13px;
-            margin: 6px 0;
-            line-height: 1.5;
-        }
-        .review-card .author {
-            color: #64748b;
-            font-size: 12px;
-        }
-
-        /* ===== FAQ ===== */
-        .faq-item {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 12px;
-            padding: 14px 16px;
-            margin-bottom: 8px;
-            transition: 0.3s;
-            cursor: pointer;
-        }
-        .faq-item:hover {
-            background: rgba(255, 255, 255, 0.04);
-        }
-        .faq-item .q {
-            font-weight: 500;
-            color: #f1f5f9;
-            font-size: 14px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .faq-item .q .icon {
-            color: #60a5fa;
-            transition: 0.3s;
-        }
-        .faq-item .a {
-            color: #94a3b8;
-            font-size: 13px;
-            margin-top: 8px;
-            display: none;
-            line-height: 1.6;
-        }
-        .faq-item.open .a {
-            display: block;
-        }
-        .faq-item.open .q .icon {
-            transform: rotate(180deg);
         }
 
         .stats-grid {
@@ -420,6 +619,7 @@
             gap: 12px;
             margin: 20px 0 10px;
         }
+
         .stat-item {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.04);
@@ -428,11 +628,13 @@
             text-align: center;
             transition: all 0.3s ease;
         }
+
         .stat-item:hover {
             background: rgba(255, 255, 255, 0.04);
             border-color: rgba(59, 130, 246, 0.15);
             transform: translateY(-4px);
         }
+
         .stat-number {
             font-size: 28px;
             font-weight: 700;
@@ -442,6 +644,7 @@
             background-clip: text;
             display: block;
         }
+
         .stat-label {
             font-size: 12px;
             color: #94a3b8;
@@ -457,17 +660,20 @@
             margin: 32px 0;
             backdrop-filter: blur(5px);
         }
+
         .form-card .form-title {
             font-size: 20px;
             font-weight: 600;
             margin-bottom: 4px;
             letter-spacing: -0.3px;
         }
+
         .form-card .form-sub {
             color: #94a3b8;
             font-size: 14px;
             margin-bottom: 20px;
         }
+
         .form-card label {
             font-size: 12px;
             font-weight: 500;
@@ -477,6 +683,7 @@
             letter-spacing: 0.3px;
             text-transform: uppercase;
         }
+
         .form-card input,
         .form-card select {
             width: 100%;
@@ -490,18 +697,22 @@
             transition: 0.3s;
             font-family: inherit;
         }
+
         .form-card input:focus,
         .form-card select:focus {
             border-color: rgba(59, 130, 246, 0.3);
             background: rgba(0, 0, 0, 0.6);
         }
+
         .form-card input::placeholder {
             color: #475569;
         }
+
         .form-card select option {
             background: #0a0a0f;
             color: #e8edf5;
         }
+
         .form-card .btn-submit {
             width: 100%;
             margin-top: 24px;
@@ -516,6 +727,7 @@
             transition: all 0.3s ease;
             box-shadow: 0 8px 32px rgba(59, 130, 246, 0.2);
         }
+
         .form-card .btn-submit:hover {
             transform: translateY(-2px);
             box-shadow: 0 12px 40px rgba(59, 130, 246, 0.35);
@@ -539,10 +751,12 @@
             transform: translateY(20px);
             z-index: 100;
         }
+
         .scroll-top.visible {
             opacity: 1;
             transform: translateY(0);
         }
+
         .scroll-top:hover {
             transform: translateY(-4px) scale(1.05);
         }
@@ -556,54 +770,113 @@
             border-top: 1px solid rgba(255, 255, 255, 0.03);
             padding-top: 24px;
         }
+
         .footer .social-links {
             display: flex;
             justify-content: center;
             gap: 16px;
             margin-bottom: 12px;
         }
+
         .footer .social-links a {
             color: #475569;
             text-decoration: none;
             font-size: 20px;
             transition: 0.3s;
         }
+
         .footer .social-links a:hover {
             color: #60a5fa;
             transform: translateY(-2px);
         }
 
         @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
         @keyframes fadeDown {
-            from { opacity: 0; transform: translateY(-16px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-16px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @media (min-width: 600px) {
-            .hero-wrapper { flex-direction: row; gap: 32px; align-items: center; }
-            .hero-image { max-width: 220px; }
-            .hero h1 { font-size: 36px; }
+            .hero-wrapper {
+                flex-direction: row;
+                gap: 32px;
+                align-items: center;
+            }
+            .hero-image {
+                max-width: 220px;
+            }
+            .hero h1 {
+                font-size: 36px;
+            }
+            .cases-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .steps-grid {
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+            }
         }
+
         @media (min-width: 768px) {
-            body { padding: 40px 32px 80px; }
-            .container { max-width: 720px; }
-            .hero h1 { font-size: 42px; }
-            .hero p { font-size: 18px; }
-            .card-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
-            .card { padding: 20px 24px; }
-            .section-title { font-size: 24px; margin: 48px 0 20px; }
-            .form-card { padding: 36px 32px; }
-            .hero-image { max-width: 260px; }
-            .review-grid { grid-template-columns: 1fr 1fr; }
+            body {
+                padding: 40px 32px 80px;
+            }
+            .container {
+                max-width: 720px;
+            }
+            .hero h1 {
+                font-size: 42px;
+            }
+            .hero p {
+                font-size: 18px;
+            }
+            .card-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 14px;
+            }
+            .card {
+                padding: 20px 24px;
+            }
+            .section-title {
+                font-size: 24px;
+                margin: 48px 0 20px;
+            }
+            .form-card {
+                padding: 36px 32px;
+            }
+            .hero-image {
+                max-width: 260px;
+            }
         }
+
         @media (min-width: 1024px) {
-            .container { max-width: 880px; }
-            .card-grid { grid-template-columns: 1fr 1fr 1fr; }
-            .hero h1 { font-size: 48px; }
-            .hero-image { max-width: 300px; }
+            .container {
+                max-width: 880px;
+            }
+            .card-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+            .hero h1 {
+                font-size: 48px;
+            }
+            .hero-image {
+                max-width: 300px;
+            }
         }
     </style>
 </head>
@@ -633,6 +906,18 @@
                 </div>
             </div>
         </section>
+
+        <!-- ===== ТАЙМЕР ===== -->
+        <div class="timer-block" id="timerBlock">
+            <div class="timer-title">🔥 Скидка 20% на первый заказ</div>
+            <div class="timer-display" id="timerDisplay">
+                <div class="time-unit"><span id="timerDays">00</span><span class="time-label">дней</span></div>
+                <div class="time-unit"><span id="timerHours">00</span><span class="time-label">часов</span></div>
+                <div class="time-unit"><span id="timerMinutes">00</span><span class="time-label">минут</span></div>
+                <div class="time-unit"><span id="timerSeconds">00</span><span class="time-label">секунд</span></div>
+            </div>
+            <div class="timer-sub">Успейте заказать со скидкой!</div>
+        </div>
 
         <!-- ===== СТАТИСТИКА ===== -->
         <div class="stats-grid">
@@ -750,7 +1035,7 @@
             </div>
         </div>
 
-        <!-- ===== ПРАЙС (В 2 КОЛОНКИ) ===== -->
+        <!-- ===== ПРАЙС ===== -->
         <div class="section-title">
             <span>Прайс</span>
             <span class="line"></span>
@@ -768,44 +1053,84 @@
             <div class="price-item"><span class="name">Доработки (час)</span><span class="value">1 000 ₽</span></div>
         </div>
 
-        <!-- ===== ОТЗЫВЫ ===== -->
+        <!-- ===== ЭТАПЫ РАБОТЫ ===== -->
+        <div class="section-title">
+            <span>Как мы работаем</span>
+            <span class="line"></span>
+        </div>
+        <div class="steps-grid">
+            <div class="step-item">
+                <div class="step-num">1</div>
+                <div class="step-name">Заявка</div>
+                <div class="step-desc">Оставьте заявку или напишите в Telegram</div>
+            </div>
+            <div class="step-item">
+                <div class="step-num">2</div>
+                <div class="step-name">Обсуждение</div>
+                <div class="step-desc">Уточняем детали, сроки, цену</div>
+            </div>
+            <div class="step-item">
+                <div class="step-num">3</div>
+                <div class="step-name">Разработка</div>
+                <div class="step-desc">Создаём проект с учётом всех пожеланий</div>
+            </div>
+            <div class="step-item">
+                <div class="step-num">4</div>
+                <div class="step-name">Запуск</div>
+                <div class="step-desc">Тестируем, сдаём, поддерживаем</div>
+            </div>
+        </div>
+
+        <!-- ===== КЕЙСЫ ===== -->
+        <div class="section-title">
+            <span>Наши работы</span>
+            <span class="line"></span>
+        </div>
+        <div class="cases-grid">
+            <div class="case-item">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop" alt="Бот для стоматологии" />
+                <div class="case-body">
+                    <div class="case-title">Бот для стоматологии</div>
+                    <div class="case-desc">Запись клиентов, уведомления, напоминания</div>
+                    <span class="case-tag">Telegram Bot</span>
+                </div>
+            </div>
+            <div class="case-item">
+                <img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&h=400&fit=crop" alt="Магазин цветов" />
+                <div class="case-body">
+                    <div class="case-title">Магазин цветов в Telegram</div>
+                    <div class="case-desc">Каталог, корзина, оплата, доставка</div>
+                    <span class="case-tag">Mini App</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== ОТЗЫВЫ (СЛАЙДЕР) ===== -->
         <div class="section-title">
             <span>Отзывы</span>
             <span class="line"></span>
         </div>
-        <div class="review-grid">
-            <div class="review-card">
+        <div class="review-slider" id="reviewSlider">
+            <div class="slide active">
                 <div class="stars">★★★★★</div>
                 <div class="text">Сделали бота для записи за 2 дня. Всё работает отлично, клиенты довольны!</div>
                 <div class="author">— Александр, стоматология</div>
             </div>
-            <div class="review-card">
+            <div class="slide">
                 <div class="stars">★★★★★</div>
                 <div class="text">Mini App для магазина — теперь продаём прямо в Telegram. Выручка выросла на 25%.</div>
                 <div class="author">— Екатерина, цветочный бизнес</div>
             </div>
-        </div>
-
-        <!-- ===== FAQ ===== -->
-        <div class="section-title">
-            <span>Частые вопросы</span>
-            <span class="line"></span>
-        </div>
-        <div class="faq-item">
-            <div class="q"><span>Сколько времени занимает разработка?</span><span class="icon">▼</span></div>
-            <div class="a">В среднем 3–7 дней. Всё зависит от сложности проекта. Простого бота можем сделать за 1–2 дня.</div>
-        </div>
-        <div class="faq-item">
-            <div class="q"><span>Какая оплата?</span><span class="icon">▼</span></div>
-            <div class="a">Оплата поэтапная: 50% предоплата, 50% после готовности. Принимаем на карту или USDT.</div>
-        </div>
-        <div class="faq-item">
-            <div class="q"><span>Что нужно от меня для старта?</span><span class="icon">▼</span></div>
-            <div class="a">ТЗ (техническое задание) или просто описание идеи. Всё остальное делаем сами.</div>
-        </div>
-        <div class="faq-item">
-            <div class="q"><span>Есть ли гарантия?</span><span class="icon">▼</span></div>
-            <div class="a">Да, бесплатная поддержка в течение 2 недель после сдачи проекта. Исправляем любые баги.</div>
+            <div class="slide">
+                <div class="stars">★★★★★</div>
+                <div class="text">Быстро, качественно, всегда на связи. Рекомендую!</div>
+                <div class="author">— Дмитрий, IT-стартап</div>
+            </div>
+            <div class="dots" id="reviewDots">
+                <button class="dot active" data-index="0"></button>
+                <button class="dot" data-index="1"></button>
+                <button class="dot" data-index="2"></button>
+            </div>
         </div>
 
         <!-- ===== ФОРМА ===== -->
@@ -841,12 +1166,10 @@
             <div id="formMsg"></div>
         </div>
 
-        <!-- ===== СЧЁТЧИК (ВСЕГО ПОСЕТИТЕЛЕЙ) ===== -->
+        <!-- ===== СЧЁТЧИК ПОСЕТИТЕЛЕЙ ===== -->
         <div style="margin:24px 0 12px;display:flex;justify-content:center;align-items:center;gap:10px;font-size:13px;color:#475569;">
             <span>👤 Всего посетителей:</span>
-            <a href="#" target="_blank">
-                <img src="https://counter.websiteout.net/widget/derevcov1307-bot/" width="70" height="20" border="0" alt="Счётчик посетителей" />
-            </a>
+            <img src="https://counter.websiteout.net/widget/derevcov1307-bot/" width="70" height="20" border="0" alt="Счётчик посетителей" />
         </div>
 
         <!-- ===== КНОПКА В TELEGRAM ===== -->
@@ -945,6 +1268,54 @@
             }, 40);
         });
 
+        // ===== ТАЙМЕР (3 дня от текущего момента) =====
+        (function timer() {
+            const deadline = new Date();
+            deadline.setDate(deadline.getDate() + 3);
+
+            function updateTimer() {
+                const now = new Date();
+                const diff = deadline - now;
+                if (diff <= 0) {
+                    document.getElementById('timerDisplay').innerHTML = '<div style="color:#f87171;">Акция завершена</div>';
+                    return;
+                }
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                document.getElementById('timerDays').textContent = String(days).padStart(2, '0');
+                document.getElementById('timerHours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('timerMinutes').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('timerSeconds').textContent = String(seconds).padStart(2, '0');
+            }
+            updateTimer();
+            setInterval(updateTimer, 1000);
+        })();
+
+        // ===== СЛАЙДЕР ОТЗЫВОВ =====
+        (function slider() {
+            const slides = document.querySelectorAll('.review-slider .slide');
+            const dots = document.querySelectorAll('.review-slider .dot');
+            let current = 0;
+
+            function goTo(index) {
+                slides.forEach((s, i) => s.classList.toggle('active', i === index));
+                dots.forEach((d, i) => d.classList.toggle('active', i === index));
+                current = index;
+            }
+
+            dots.forEach(d => {
+                d.addEventListener('click', function() {
+                    goTo(parseInt(this.dataset.index));
+                });
+            });
+
+            setInterval(() => {
+                goTo((current + 1) % slides.length);
+            }, 5000);
+        })();
+
         // ===== КНОПКА НАВЕРХ =====
         const scrollBtn = document.getElementById('scrollTop');
         window.addEventListener('scroll', () => {
@@ -952,13 +1323,6 @@
         });
         scrollBtn.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-        // ===== FAQ =====
-        document.querySelectorAll('.faq-item').forEach(item => {
-            item.addEventListener('click', function() {
-                this.classList.toggle('open');
-            });
         });
 
         // ===== ФОРМА =====
