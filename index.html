@@ -1,29 +1,24 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    
-    <title>MiniLab — разработка Telegram Mini Apps и ботов</title>
-    <meta name="description" content="Создаём Telegram Mini Apps, ботов с AI, интернет-магазины, админ-панели и сайты под ключ. Цены от 500 ₽. Разработка с использованием AI.">
-    <meta name="keywords" content="telegram mini app, разработка ботов, заказать телеграм бота, мини апп телеграм, создание сайтов">
-    <link rel="canonical" href="https://botstudio.github.io/minilab/">
-    <meta property="og:title" content="MiniLab — разработка Telegram Mini Apps и ботов">
-    <meta property="og:description" content="Создаём Telegram Mini Apps, ботов с AI и сайты под ключ. Цены от 500 ₽.">
-    <meta property="og:url" content="https://botstudio.github.io/minilab/">
-    <meta name="robots" content="index, follow">
-    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+
+    <title>BotStudio — разработка Telegram Mini Apps и ботов</title>
+    <meta name="description" content="BotStudio создаёт Telegram Mini Apps, ботов с AI, интернет-магазины, админ-панели и сайты под ключ. Цены от 500 ₽." />
+    <link rel="canonical" href="https://derevcov1307-bot.github.io/miniapp/" />
+    <meta property="og:title" content="BotStudio — разработка Telegram Mini Apps и ботов" />
+    <meta property="og:description" content="Создаём Telegram Mini Apps, ботов с AI и сайты под ключ. Цены от 500 ₽." />
+
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
         html {
             scroll-behavior: smooth;
         }
-        
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
             background: #0a0a0f;
@@ -31,43 +26,36 @@
             padding: 20px 16px 60px;
             line-height: 1.6;
             min-height: 100vh;
-            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
-        
-        body::before {
-            content: '';
+
+        /* ===== ФОН С ЧАСТИЦАМИ ===== */
+        #particles-canvas {
             position: fixed;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: 
-                radial-gradient(ellipse at 20% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 20%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 100%, rgba(236, 72, 153, 0.04) 0%, transparent 40%);
-            z-index: -1;
-            animation: bgFloat 25s ease-in-out infinite alternate;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
         }
-        
-        @keyframes bgFloat {
-            0% { transform: scale(1) rotate(0deg); }
-            100% { transform: scale(1.1) rotate(5deg); }
-        }
-        
+
         .container {
             max-width: 560px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
-        
+
+        /* ===== ШАПКА ===== */
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 24px;
             padding-top: 8px;
-            animation: fadeDown 0.5s ease-out;
+            animation: fadeDown 0.6s ease-out;
         }
-        
         .logo {
             font-weight: 700;
             font-size: 24px;
@@ -77,60 +65,58 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
         .logo .accent {
             background: linear-gradient(135deg, #60a5fa, #a78bfa);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
         .btn-outline {
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
             padding: 10px 24px;
             border-radius: 40px;
             font-size: 14px;
             font-weight: 500;
             color: #94a3b8;
             text-decoration: none;
-            border: 1px solid rgba(255,255,255,0.06);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
         }
-        
         .btn-outline:hover {
-            background: rgba(59, 130, 246, 0.15);
-            border-color: rgba(59, 130, 246, 0.3);
+            background: rgba(59, 130, 246, 0.2);
+            border-color: rgba(59, 130, 246, 0.4);
             color: #f8fafc;
+            transform: scale(1.05);
         }
-        
+
+        /* ===== ГЕРОЙ ===== */
         .hero {
             padding: 20px 0 28px;
             animation: fadeUp 0.6s ease-out;
         }
-        
         .hero-wrapper {
             display: flex;
             flex-direction: column;
             gap: 24px;
             align-items: center;
         }
-        
         .hero-content {
             flex: 1;
         }
-        
         .hero-image {
             flex: 0 0 auto;
             width: 100%;
             max-width: 280px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(59, 130, 246, 0.15);
         }
-        
-        .hero-image svg {
+        .hero-image img {
             width: 100%;
             height: auto;
             display: block;
         }
-        
         .hero .tag {
             display: inline-block;
             font-size: 12px;
@@ -138,13 +124,13 @@
             color: #60a5fa;
             letter-spacing: 0.5px;
             text-transform: uppercase;
-            background: rgba(59,130,246,0.1);
+            background: rgba(59, 130, 246, 0.1);
             padding: 6px 16px;
             border-radius: 20px;
-            border: 1px solid rgba(59,130,246,0.08);
+            border: 1px solid rgba(59, 130, 246, 0.08);
             margin-bottom: 16px;
+            backdrop-filter: blur(10px);
         }
-        
         .hero h1 {
             font-size: 32px;
             font-weight: 700;
@@ -152,21 +138,18 @@
             margin-bottom: 14px;
             letter-spacing: -0.5px;
         }
-        
         .hero h1 .highlight {
             background: linear-gradient(135deg, #60a5fa, #a78bfa);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
         .hero p {
             color: #94a3b8;
             font-size: 16px;
             line-height: 1.7;
             margin-bottom: 28px;
         }
-        
         .hero .btn-primary {
             display: inline-block;
             background: linear-gradient(135deg, #3b82f6, #7c3aed);
@@ -181,12 +164,12 @@
             border: none;
             cursor: pointer;
         }
-        
         .hero .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 48px rgba(59, 130, 246, 0.45);
+            box-shadow: 0 12px 48px rgba(59, 130, 246, 0.5);
         }
-        
+
+        /* ===== БЛОКИ ===== */
         .section-title {
             font-size: 20px;
             font-weight: 600;
@@ -197,35 +180,65 @@
             align-items: center;
             gap: 14px;
         }
-        
         .section-title .line {
             flex: 1;
             height: 1px;
-            background: linear-gradient(90deg, rgba(255,255,255,0.06), transparent);
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.06), transparent);
         }
-        
+
+        /* ===== SVG-ИКОНКИ ===== */
+        .icon-svg {
+            width: 24px;
+            height: 24px;
+            fill: none;
+            stroke: #60a5fa;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex-shrink: 0;
+        }
+        .icon-svg.large {
+            width: 32px;
+            height: 32px;
+        }
+
+        /* ===== КАРТОЧКИ ===== */
         .card-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 12px;
-            animation: fadeUp 0.7s ease-out;
         }
-        
         .card {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.04);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
             border-radius: 16px;
             padding: 18px 20px;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: default;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: cardAppear 0.6s ease-out forwards;
+            backdrop-filter: blur(5px);
         }
-        
+        .card:nth-child(1) { animation-delay: 0.05s; }
+        .card:nth-child(2) { animation-delay: 0.1s; }
+        .card:nth-child(3) { animation-delay: 0.15s; }
+        .card:nth-child(4) { animation-delay: 0.2s; }
+        .card:nth-child(5) { animation-delay: 0.25s; }
+        .card:nth-child(6) { animation-delay: 0.3s; }
+
+        @keyframes cardAppear {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .card:hover {
-            background: rgba(255,255,255,0.04);
-            border-color: rgba(255,255,255,0.08);
-            transform: translateX(6px);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(59, 130, 246, 0.2);
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 12px 40px rgba(59, 130, 246, 0.05);
         }
-        
+
         .card .card-top {
             display: flex;
             justify-content: space-between;
@@ -233,30 +246,22 @@
             flex-wrap: wrap;
             gap: 8px;
         }
-        
         .card h3 {
             font-size: 16px;
             font-weight: 500;
             color: #f1f5f9;
             letter-spacing: -0.2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        
-        .card .icon {
-            font-size: 20px;
-            color: #475569;
-            width: 32px;
-            text-align: center;
-            font-weight: 300;
-        }
-        
         .card p {
             color: #94a3b8;
             font-size: 14px;
             margin-top: 6px;
-            padding-right: 8px;
+            padding-left: 34px;
             line-height: 1.6;
         }
-        
         .card .price-tag {
             display: inline-block;
             margin-top: 10px;
@@ -264,79 +269,120 @@
             font-weight: 500;
             color: #60a5fa;
             letter-spacing: 0.3px;
-            padding: 2px 0;
+            padding-left: 34px;
         }
-        
         .card .arrow {
             color: #334155;
             font-size: 14px;
             transition: 0.3s;
             margin-left: 4px;
         }
-        
         .card:hover .arrow {
             color: #60a5fa;
-            transform: translateX(4px);
+            transform: translateX(6px);
         }
-        
+
+        /* ===== ФОТО-БЛОКИ ===== */
+        .photo-block {
+            margin: 20px 0 10px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+        .photo-block img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ===== СТАТИСТИКА ===== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            margin: 20px 0 10px;
+        }
+        .stat-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 16px;
+            padding: 16px 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .stat-item:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(59, 130, 246, 0.15);
+            transform: translateY(-4px);
+        }
+        .stat-number {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+        }
+        .stat-label {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 4px;
+            display: block;
+        }
+
+        /* ===== ПРАЙС ===== */
         .price-card {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.04);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
             border-radius: 16px;
             padding: 6px 18px;
-            animation: fadeUp 0.8s ease-out;
+            backdrop-filter: blur(5px);
         }
-        
         .price-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 14px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
             font-size: 14px;
         }
-        
         .price-row:last-child {
             border-bottom: none;
         }
-        
         .price-name {
             color: #cbd5e1;
             font-weight: 400;
         }
-        
         .price-value {
             font-weight: 500;
             color: #f1f5f9;
             letter-spacing: 0.2px;
         }
-        
         .price-value.accent {
             color: #60a5fa;
         }
-        
+
+        /* ===== ФОРМА ===== */
         .form-card {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.04);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
             border-radius: 20px;
             padding: 28px 24px;
             margin: 32px 0;
-            animation: fadeUp 0.9s ease-out;
+            backdrop-filter: blur(5px);
         }
-        
         .form-card .form-title {
             font-size: 20px;
             font-weight: 600;
             margin-bottom: 4px;
             letter-spacing: -0.3px;
         }
-        
         .form-card .form-sub {
             color: #94a3b8;
             font-size: 14px;
             margin-bottom: 20px;
         }
-        
         .form-card label {
             font-size: 12px;
             font-weight: 500;
@@ -346,37 +392,31 @@
             letter-spacing: 0.3px;
             text-transform: uppercase;
         }
-        
         .form-card input,
         .form-card select {
             width: 100%;
             padding: 16px 18px;
             border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.04);
-            background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            background: rgba(0, 0, 0, 0.4);
             color: #f1f5f9;
             font-size: 16px;
             outline: none;
             transition: 0.3s;
             font-family: inherit;
         }
-        
         .form-card input:focus,
         .form-card select:focus {
             border-color: rgba(59, 130, 246, 0.3);
-            background: rgba(0,0,0,0.6);
-            box-shadow: 0 0 30px rgba(59, 130, 246, 0.04);
+            background: rgba(0, 0, 0, 0.6);
         }
-        
         .form-card input::placeholder {
             color: #475569;
         }
-        
         .form-card select option {
             background: #0a0a0f;
             color: #e8edf5;
         }
-        
         .form-card .btn-submit {
             width: 100%;
             margin-top: 24px;
@@ -391,174 +431,148 @@
             transition: all 0.3s ease;
             box-shadow: 0 8px 32px rgba(59, 130, 246, 0.2);
         }
-        
         .form-card .btn-submit:hover {
             transform: translateY(-2px);
             box-shadow: 0 12px 40px rgba(59, 130, 246, 0.35);
         }
-        
-        #formMsg {
-            margin-top: 16px;
-            font-size: 14px;
-            text-align: center;
-            min-height: 24px;
-        }
-        
-        .tg-fixed {
-            margin-top: 32px;
-            text-align: center;
-            animation: fadeUp 1s ease-out;
-        }
-        
-        .tg-fixed .btn-tg-big {
-            display: inline-block;
-            background: rgba(255,255,255,0.04);
-            padding: 18px 52px;
-            border-radius: 60px;
-            font-size: 17px;
-            font-weight: 500;
-            color: #f1f5f9;
-            text-decoration: none;
-            border: 1px solid rgba(255,255,255,0.06);
+
+        /* ===== КНОПКА "НАВЕРХ" ===== */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #3b82f6, #7c3aed);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            font-size: 22px;
+            cursor: pointer;
+            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3);
             transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            z-index: 100;
         }
-        
-        .tg-fixed .btn-tg-big:hover {
-            background: rgba(255,255,255,0.06);
-            border-color: rgba(255,255,255,0.12);
-            transform: scale(1.02);
+        .scroll-top.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
-        
-        .tg-fixed .sub {
-            color: #475569;
-            font-size: 13px;
-            margin-top: 10px;
+        .scroll-top:hover {
+            transform: translateY(-4px) scale(1.05);
         }
-        
-        .counter-container {
-            margin: 24px 0 12px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            font-size: 13px;
-            color: #475569;
-        }
-        
-        .counter-container img {
-            border-radius: 4px;
-        }
-        
+
+        /* ===== ПОДВАЛ ===== */
         .footer {
             margin-top: 48px;
             text-align: center;
             color: #1e293b;
             font-size: 12px;
             letter-spacing: 0.3px;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            padding-top: 24px;
         }
-        
+        .footer .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 12px;
+        }
+        .footer .social-links a {
+            color: #475569;
+            text-decoration: none;
+            font-size: 20px;
+            transition: 0.3s;
+        }
+        .footer .social-links a:hover {
+            color: #60a5fa;
+            transform: translateY(-2px);
+        }
+
+        /* ===== АНИМАЦИИ ===== */
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
         @keyframes fadeDown {
             from { opacity: 0; transform: translateY(-16px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
+
+        /* ===== АДАПТИВ ===== */
         @media (min-width: 600px) {
             .hero-wrapper {
                 flex-direction: row;
                 gap: 32px;
                 align-items: center;
             }
-            
             .hero-image {
                 max-width: 220px;
             }
-            
             .hero h1 {
                 font-size: 36px;
             }
         }
-        
         @media (min-width: 768px) {
             body {
                 padding: 40px 32px 80px;
             }
-            
             .container {
                 max-width: 720px;
             }
-            
             .hero h1 {
                 font-size: 42px;
             }
-            
             .hero p {
                 font-size: 18px;
             }
-            
             .card-grid {
                 grid-template-columns: 1fr 1fr;
                 gap: 14px;
             }
-            
             .card {
                 padding: 20px 24px;
             }
-            
             .section-title {
                 font-size: 24px;
                 margin: 48px 0 20px;
             }
-            
             .form-card {
                 padding: 36px 32px;
             }
-            
             .price-card {
                 padding: 8px 24px;
             }
-            
             .price-row {
                 font-size: 15px;
                 padding: 16px 0;
             }
-            
             .logo {
                 font-size: 28px;
             }
-            
             .btn-outline {
                 padding: 12px 32px;
                 font-size: 15px;
             }
-            
             .hero .btn-primary {
                 padding: 18px 52px;
                 font-size: 17px;
             }
-            
             .hero-image {
                 max-width: 260px;
             }
         }
-        
         @media (min-width: 1024px) {
             .container {
                 max-width: 880px;
             }
-            
             .card-grid {
                 grid-template-columns: 1fr 1fr 1fr;
             }
-            
             .hero h1 {
                 font-size: 48px;
             }
-            
             .hero-image {
                 max-width: 300px;
             }
@@ -566,224 +580,175 @@
     </style>
 </head>
 <body>
+
+    <!-- ===== ФОН С ЧАСТИЦАМИ ===== -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- ===== КНОПКА "НАВЕРХ" ===== -->
+    <button class="scroll-top" id="scrollTop">↑</button>
+
     <div class="container">
-        
+
+        <!-- ===== ШАПКА ===== -->
         <header class="header">
-            <div class="logo">✦ <span class="accent">Mini</span>Lab</div>
+            <div class="logo">✦ <span class="accent">Bot</span>Studio</div>
             <a href="https://t.me/Ffghvtc" class="btn-outline" target="_blank">Связаться</a>
         </header>
-        
+
+        <!-- ===== ГЕРОЙ ===== -->
         <section class="hero">
             <div class="hero-wrapper">
                 <div class="hero-content">
-                    <div class="tag">⚡ AI-Driven Development</div>
-                    <h1>Создаём <span class="highlight">Telegram Mini Apps</span><br>и сайты</h1>
+                    <div class="tag">AI-Driven Development</div>
+                    <h1>Создаём <span class="highlight">Telegram Mini Apps</span> и сайты</h1>
                     <p>Современные веб-решения, боты и магазины внутри Telegram — от идеи до запуска за 3–7 дней.</p>
                     <a href="https://t.me/Ffghvtc" class="btn-primary" target="_blank">Начать проект →</a>
                 </div>
                 <div class="hero-image">
-                    <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Фон с лёгким свечением -->
-                        <circle cx="200" cy="200" r="180" fill="url(#glow)" opacity="0.3"/>
-                        <defs>
-                            <radialGradient id="glow" cx="50%" cy="50%" r="50%">
-                                <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.3"/>
-                                <stop offset="100%" stop-color="#60a5fa" stop-opacity="0"/>
-                            </radialGradient>
-                            <linearGradient id="hairGrad" x1="0" y1="0" x2="1" y2="1">
-                                <stop offset="0%" stop-color="#2d1b69"/>
-                                <stop offset="100%" stop-color="#1a0f3f"/>
-                            </linearGradient>
-                            <linearGradient id="skinGrad" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%" stop-color="#f5d6b8"/>
-                                <stop offset="100%" stop-color="#eac4a0"/>
-                            </linearGradient>
-                            <linearGradient id="glassGrad" x1="0" y1="0" x2="1" y2="1">
-                                <stop offset="0%" stop-color="rgba(255,255,255,0.15)"/>
-                                <stop offset="100%" stop-color="rgba(255,255,255,0.05)"/>
-                            </linearGradient>
-                            <linearGradient id="laptopGrad" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%" stop-color="#1a1a2e"/>
-                                <stop offset="100%" stop-color="#0f0f1a"/>
-                            </linearGradient>
-                            <linearGradient id="screenGrad" x1="0" y1="0" x2="1" y2="1">
-                                <stop offset="0%" stop-color="#0a0a1a"/>
-                                <stop offset="100%" stop-color="#1a1a3e"/>
-                            </linearGradient>
-                        </defs>
-                        
-                        <!-- Тело (плечи, торс) -->
-                        <ellipse cx="200" cy="330" rx="95" ry="55" fill="#1a1a2e"/>
-                        <ellipse cx="200" cy="320" rx="80" ry="45" fill="#1f1f3a"/>
-                        
-                        <!-- Шея -->
-                        <rect x="175" y="225" width="50" height="45" rx="10" fill="url(#skinGrad)"/>
-                        
-                        <!-- Голова -->
-                        <ellipse cx="200" cy="195" rx="65" ry="75" fill="url(#skinGrad)"/>
-                        
-                        <!-- Волосы (основная масса) -->
-                        <ellipse cx="200" cy="175" rx="72" ry="60" fill="url(#hairGrad)"/>
-                        
-                        <!-- Чёлка -->
-                        <path d="M140 165 Q155 130 180 145 Q190 120 210 140 Q225 115 240 138 Q260 120 265 155 Q270 140 275 165 L140 165Z" fill="url(#hairGrad)"/>
-                        
-                        <!-- Пучок/хвост сбоку -->
-                        <ellipse cx="270" cy="155" rx="30" ry="45" transform="rotate(15 270 155)" fill="url(#hairGrad)"/>
-                        
-                        <!-- Глаза -->
-                        <ellipse cx="175" cy="190" rx="16" ry="14" fill="#f0f0f0"/>
-                        <ellipse cx="225" cy="190" rx="16" ry="14" fill="#f0f0f0"/>
-                        <ellipse cx="178" cy="190" rx="9" ry="9" fill="#2d1b69"/>
-                        <ellipse cx="228" cy="190" rx="9" ry="9" fill="#2d1b69"/>
-                        <ellipse cx="181" cy="187" rx="4" ry="4" fill="white"/>
-                        <ellipse cx="231" cy="187" rx="4" ry="4" fill="white"/>
-                        
-                        <!-- Брови (умные, приподнятые) -->
-                        <path d="M158 176 Q168 168 188 172" stroke="#2d1b69" stroke-width="2.5" stroke-linecap="round"/>
-                        <path d="M215 172 Q235 168 245 176" stroke="#2d1b69" stroke-width="2.5" stroke-linecap="round"/>
-                        
-                        <!-- Очки -->
-                        <ellipse cx="175" cy="190" rx="22" ry="18" stroke="rgba(255,255,255,0.3)" stroke-width="2" fill="url(#glassGrad)"/>
-                        <ellipse cx="225" cy="190" rx="22" ry="18" stroke="rgba(255,255,255,0.3)" stroke-width="2" fill="url(#glassGrad)"/>
-                        <line x1="197" y1="190" x2="203" y2="190" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
-                        <line x1="153" y1="190" x2="140" y2="185" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
-                        <line x1="247" y1="190" x2="260" y2="185" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
-                        
-                        <!-- Нос -->
-                        <path d="M197 200 L200 213 L203 200" stroke="#d4a88a" stroke-width="1.5" stroke-linecap="round"/>
-                        
-                        <!-- Улыбка (лёгкая, уверенная) -->
-                        <path d="M185 215 Q200 225 215 215" stroke="#c48a7a" stroke-width="2" stroke-linecap="round" fill="none"/>
-                        
-                        <!-- Ноутбук -->
-                        <rect x="100" y="250" width="200" height="130" rx="12" fill="url(#laptopGrad)" stroke="#2a2a4a" stroke-width="1"/>
-                        <!-- Экран -->
-                        <rect x="108" y="255" width="184" height="100" rx="6" fill="url(#screenGrad)"/>
-                        <!-- Код на экране -->
-                        <rect x="118" y="265" width="40" height="6" rx="2" fill="#3b82f6" opacity="0.7"/>
-                        <rect x="118" y="278" width="60" height="4" rx="2" fill="#a78bfa" opacity="0.5"/>
-                        <rect x="118" y="290" width="35" height="4" rx="2" fill="#60a5fa" opacity="0.6"/>
-                        <rect x="118" y="302" width="55" height="4" rx="2" fill="#a78bfa" opacity="0.4"/>
-                        <rect x="168" y="278" width="50" height="4" rx="2" fill="#34d399" opacity="0.5"/>
-                        <rect x="168" y="290" width="70" height="4" rx="2" fill="#60a5fa" opacity="0.4"/>
-                        <rect x="168" y="302" width="45" height="4" rx="2" fill="#a78bfa" opacity="0.5"/>
-                        <!-- "AI" на экране -->
-                        <text x="270" y="285" font-family="monospace" font-size="14" font-weight="bold" fill="#60a5fa" opacity="0.8">AI</text>
-                        <!-- Подставка ноутбука -->
-                        <rect x="140" y="380" width="120" height="6" rx="3" fill="#1a1a2e"/>
-                        
-                        <!-- Руки -->
-                        <path d="M120 320 Q110 340 115 360 Q120 370 130 365 Q135 355 130 340" fill="url(#skinGrad)" opacity="0.9"/>
-                        <path d="M280 320 Q290 340 285 360 Q280 370 270 365 Q265 355 270 340" fill="url(#skinGrad)" opacity="0.9"/>
-                        
-                        <!-- Свечение вокруг -->
-                        <circle cx="200" cy="200" r="190" stroke="url(#glow)" stroke-width="1" opacity="0.1"/>
-                    </svg>
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&h=600&fit=crop&crop=face" alt="Девушка-разработчик" />
                 </div>
             </div>
         </section>
-        
+
+        <!-- ===== СТАТИСТИКА ===== -->
+        <div class="stats-grid">
+            <div class="stat-item">
+                <span class="stat-number" data-count="10">0</span>
+                <span class="stat-label">Проектов</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-count="100">0</span>
+                <span class="stat-label">Довольных</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-count="7">0</span>
+                <span class="stat-label">Клиентов</span>
+            </div>
+        </div>
+
+        <!-- ===== БЛОК 1: MINI APPS ===== -->
         <div class="section-title">
-            <span>🤖 Mini Apps</span>
+            <span>Mini Apps</span>
             <span class="line"></span>
         </div>
-        
         <div class="card-grid">
             <div class="card">
                 <div class="card-top">
-                    <h3>Бот с логикой</h3>
-                    <span class="icon">⌘</span>
+                    <h3>
+                        <svg class="icon-svg" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg>
+                        Бот с логикой
+                    </h3>
                 </div>
                 <p>Команды, регистрация, рассылки, уведомления. Любая сложность.</p>
                 <div class="price-tag">от 1 000 ₽ <span class="arrow">→</span></div>
             </div>
-            
+
             <div class="card">
                 <div class="card-top">
-                    <h3>Магазин в Telegram</h3>
-                    <span class="icon">◈</span>
+                    <h3>
+                        <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                        Магазин в Telegram
+                    </h3>
                 </div>
                 <p>Каталог товаров, корзина, оплата, управление заказами.</p>
                 <div class="price-tag">от 3 000 ₽ <span class="arrow">→</span></div>
             </div>
-            
+
             <div class="card">
                 <div class="card-top">
-                    <h3>Админ-панель</h3>
-                    <span class="icon">▣</span>
+                    <h3>
+                        <svg class="icon-svg" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                        Админ-панель
+                    </h3>
                 </div>
                 <p>Управление пользователями, контентом, статистика и аналитика.</p>
                 <div class="price-tag">от 5 000 ₽ <span class="arrow">→</span></div>
             </div>
-            
+
             <div class="card">
                 <div class="card-top">
-                    <h3>Игры и квизы</h3>
-                    <span class="icon">◇</span>
+                    <h3>
+                        <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>
+                        Игры и квизы
+                    </h3>
                 </div>
                 <p>Интерактивные викторины, розыгрыши, геймификация.</p>
                 <div class="price-tag">от 4 000 ₽ <span class="arrow">→</span></div>
             </div>
-            
+
             <div class="card">
                 <div class="card-top">
-                    <h3>Бот с AI</h3>
-                    <span class="icon">✦</span>
+                    <h3>
+                        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                        Бот с AI
+                    </h3>
                 </div>
                 <p>Интеграция ChatGPT: ассистенты, генерация контента, умная поддержка.</p>
                 <div class="price-tag">от 5 500 ₽ <span class="arrow">→</span></div>
             </div>
-            
+
             <div class="card">
                 <div class="card-top">
-                    <h3>Корпоративный портал</h3>
-                    <span class="icon">⊞</span>
+                    <h3>
+                        <svg class="icon-svg" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg>
+                        Корпоративный портал
+                    </h3>
                 </div>
                 <p>Личные кабинеты, работа с БД, сложные бизнес-сценарии.</p>
                 <div class="price-tag">от 7 000 ₽ <span class="arrow">→</span></div>
             </div>
         </div>
-        
+
+        <!-- ===== ФОТО-БЛОК (КОД) ===== -->
+        <div class="photo-block">
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop" alt="Код на экране" />
+        </div>
+
+        <!-- ===== БЛОК 2: САЙТЫ ===== -->
         <div class="section-title">
-            <span>🌐 Сайты</span>
+            <span>Сайты</span>
             <span class="line"></span>
         </div>
-        
         <div class="card-grid">
             <div class="card">
                 <div class="card-top">
-                    <h3>Сайт-визитка</h3>
-                    <span class="icon">⎔</span>
+                    <h3>
+                        <svg class="icon-svg" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                        Сайт-визитка
+                    </h3>
                 </div>
                 <p>Лендинг, портфолио, до 5 страниц. Быстрый старт.</p>
                 <div class="price-tag">от 500 ₽ <span class="arrow">→</span></div>
             </div>
-            
+
             <div class="card">
                 <div class="card-top">
-                    <h3>Средний сайт</h3>
-                    <span class="icon">⊡</span>
+                    <h3>
+                        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        Средний сайт
+                    </h3>
                 </div>
                 <p>Формы, галерея, карта, до 10 страниц для бизнеса.</p>
                 <div class="price-tag">от 1 200 ₽ <span class="arrow">→</span></div>
             </div>
-            
+
             <div class="card">
                 <div class="card-top">
-                    <h3>Сложный сайт</h3>
-                    <span class="icon">⊕</span>
+                    <h3>
+                        <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                        Сложный сайт
+                    </h3>
                 </div>
                 <p>Интернет-магазин, каталог с фильтрацией, личный кабинет.</p>
                 <div class="price-tag">от 3 000 ₽ <span class="arrow">→</span></div>
             </div>
         </div>
-        
+
+        <!-- ===== ПРАЙС ===== -->
         <div class="section-title">
-            <span>💰 Прайс</span>
+            <span>Прайс</span>
             <span class="line"></span>
         </div>
-        
         <div class="price-card">
             <div class="price-row"><span class="price-name">Бот с логикой</span><span class="price-value">1 000 ₽</span></div>
             <div class="price-row"><span class="price-name">Магазин в Telegram</span><span class="price-value accent">3 000 ₽</span></div>
@@ -796,18 +761,16 @@
             <div class="price-row"><span class="price-name">Сложный сайт</span><span class="price-value accent">3 000 ₽</span></div>
             <div class="price-row"><span class="price-name">Доработки (час)</span><span class="price-value">1 000 ₽</span></div>
         </div>
-        
+
+        <!-- ===== ФОРМА ===== -->
         <div class="form-card">
-            <div class="form-title">📩 Оставить заявку</div>
+            <div class="form-title">Оставить заявку</div>
             <div class="form-sub">Ответим в Telegram в течение часа</div>
-            
             <form id="orderForm">
                 <label>Ваше имя</label>
                 <input type="text" id="name" placeholder="Алексей" required>
-                
                 <label>Telegram username</label>
                 <input type="text" id="tg_username" placeholder="@alex_dev" required>
-                
                 <label>Тип проекта</label>
                 <select id="project_type">
                     <optgroup label="Telegram Mini Apps">
@@ -827,62 +790,153 @@
                         <option>Доработка / Другое</option>
                     </optgroup>
                 </select>
-                
                 <button type="submit" class="btn-submit">Отправить →</button>
             </form>
             <div id="formMsg"></div>
         </div>
-        
-        <div class="tg-fixed">
-            <a href="https://t.me/Ffghvtc" class="btn-tg-big" target="_blank">✈ Связаться в Telegram</a>
-            <div class="sub">Обсудим всё в чате</div>
+
+        <!-- ===== КНОПКА В TELEGRAM ===== -->
+        <div style="margin-top:32px;text-align:center;">
+            <a href="https://t.me/Ffghvtc" style="display:inline-block;background:rgba(255,255,255,0.04);padding:18px 52px;border-radius:60px;font-size:17px;font-weight:500;color:#f1f5f9;text-decoration:none;border:1px solid rgba(255,255,255,0.06);transition:all 0.3s ease;" target="_blank">Связаться в Telegram →</a>
+            <div style="color:#475569;font-size:13px;margin-top:10px;">Обсудим всё в чате</div>
         </div>
-        
-        <div class="counter-container">
-            <span>👥 Сейчас на сайте:</span>
-            <a href="https://whos.amung.us/stats/botstudio/" target="_blank">
-                <img src="https://whos.amung.us/widget/botstudio/" 
-                     width="50" height="20" border="0" 
-                     alt="Счётчик посетителей" 
-                     title="Сколько людей сейчас на сайте">
+
+        <!-- ===== СЧЁТЧИК ===== -->
+        <div style="margin:24px 0 12px;display:flex;justify-content:center;align-items:center;gap:10px;font-size:13px;color:#475569;">
+            <span>Сейчас на сайте:</span>
+            <a href="https://whos.amung.us/stats/derevcov1307-bot/" target="_blank">
+                <img src="https://whos.amung.us/widget/derevcov1307-bot/" width="50" height="20" border="0" alt="Счётчик посетителей" />
             </a>
         </div>
-        
+
+        <!-- ===== ПОДВАЛ ===== -->
         <div class="footer">
-            © 2026 MiniLab — разработка под ключ
+            <div class="social-links">
+                <a href="https://t.me/Ffghvtc" target="_blank">✈</a>
+                <a href="#" target="_blank">▶</a>
+                <a href="#" target="_blank">📱</a>
+            </div>
+            <div>© 2026 BotStudio — разработка под ключ</div>
         </div>
-        
+
     </div>
-    
+
     <script>
+        // ===== АНИМИРОВАННЫЙ ФОН =====
+        (function particles() {
+            const canvas = document.getElementById('particles-canvas');
+            const ctx = canvas.getContext('2d');
+            let w, h, particles = [];
+
+            function resize() {
+                w = canvas.width = window.innerWidth;
+                h = canvas.height = window.innerHeight;
+            }
+            window.addEventListener('resize', resize);
+            resize();
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * w;
+                    this.y = Math.random() * h;
+                    this.size = Math.random() * 3 + 1;
+                    this.speedX = (Math.random() - 0.5) * 0.8;
+                    this.speedY = (Math.random() - 0.5) * 0.8;
+                    this.opacity = Math.random() * 0.3 + 0.1;
+                }
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                    if (this.x > w) this.x = 0;
+                    if (this.x < 0) this.x = w;
+                    if (this.y > h) this.y = 0;
+                    if (this.y < 0) this.y = h;
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(96, 165, 250, ${this.opacity})`;
+                    ctx.fill();
+                }
+            }
+
+            for (let i = 0; i < 60; i++) {
+                particles.push(new Particle());
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, w, h);
+                particles.forEach(p => { p.update();
+                    p.draw(); });
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 120) {
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.strokeStyle = `rgba(96, 165, 250, ${0.06 * (1 - dist / 120)})`;
+                            ctx.lineWidth = 0.6;
+                            ctx.stroke();
+                        }
+                    }
+                }
+                requestAnimationFrame(animate);
+            }
+            animate();
+        })();
+
+        // ===== АНИМАЦИЯ ЦИФР =====
+        document.querySelectorAll('.stat-number').forEach(el => {
+            const target = parseInt(el.dataset.count);
+            let current = 0;
+            const step = Math.ceil(target / 30);
+            const interval = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(interval);
+                }
+                el.textContent = current + (target > 10 ? '+' : '');
+            }, 40);
+        });
+
+        // ===== КНОПКА НАВЕРХ =====
+        const scrollBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                scrollBtn.classList.add('visible');
+            } else {
+                scrollBtn.classList.remove('visible');
+            }
+        });
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ===== ФОРМА =====
         document.getElementById('orderForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
             const name = document.getElementById('name').value.trim();
             const tg = document.getElementById('tg_username').value.trim();
             const type = document.getElementById('project_type').value;
             const msgDiv = document.getElementById('formMsg');
-            
+
             if (!name || !tg) {
                 msgDiv.textContent = '⚠️ Заполните все поля';
                 msgDiv.style.color = '#f87171';
                 return;
             }
-            
-            const message = `📩 Заявка%0AИмя: ${name}%0ATelegram: ${tg}%0AПроект: ${type}`;
-            const url = `https://t.me/Ffghvtc?text=${message}`;
-            
-            window.open(url, '_blank');
-            
+
+            window.open(`https://t.me/Ffghvtc?text=📩 Заявка%0AИмя: ${name}%0ATelegram: ${tg}%0AПроект: ${type}`, '_blank');
             msgDiv.textContent = '✅ Переходим в Telegram...';
             msgDiv.style.color = '#34d399';
-            document.getElementById('orderForm').reset();
-            
-            setTimeout(() => {
-                msgDiv.textContent = '';
-            }, 5000);
+            this.reset();
+            setTimeout(() => { msgDiv.textContent = ''; }, 5000);
         });
     </script>
-    
+
 </body>
 </html>
